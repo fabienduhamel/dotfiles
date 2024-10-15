@@ -2,15 +2,56 @@
 
 Contains mandatory dotfiles and other stuff for personal dev :)
 
-## How to
+## Setup
+
+Run:
 
 ```sh
-chezmoi init --apply https://github.com/fabienduhamel/dotfiles
+# brew install (https://brew.sh/)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# iterm2 (https://formulae.brew.sh/cask/iterm2)
+brew install --cask iterm2
+
+# dev
+brew install \
+  neovim \
+  bat \
+  curl \
+  diff-so-fancy \
+  fzf \
+  gh \
+  jq \
+  yq \
+  ripgrep \
+  telnet \
+  tldr \
+  wget \
+  node \
+  yarn \
+  git-interactive-rebase-tool \
+  prettyping \
+  ack \
+  ag \
+  btop \
+  atuin \
+  fx \
+  tabiew \
+  eza \
+  zoxide \
+  fd \
+  hub \
+  chezmoi
+
+# --- others ---
+brew install WebPQuickLook borgbackup exiftool ffmpeg imagemagick rsync
+
+# zsh-autosuggestions (optional)
+# https://github.com/zsh-users/zsh-autosuggestions
+brew install zsh-autosuggestions
 ```
 
-[chezmoi documentation](https://www.chezmoi.io/user-guide/command-overview/)
-
-## ZSH installation
+### ZSH
 
 Follow:
 
@@ -21,29 +62,29 @@ Follow:
 
 Download [MesloLG Nerd Font](https://www.nerdfonts.com/font-downloads).
 
-### Theme
+### iterm2
 
-Import themes from `iterm2/` folder.
+- Import themes from `iterm2/` folder
+- Import settings from `iterm2/` folder
 
-### Settings
+### Lazyvim
 
-Import settings from `iterm2/` folder.
+Follow [Lazyvim installation](https://www.lazyvim.org/installation).
 
-## Brew packages
-
-```sh
-# dev
-brew install bat curl diff-so-fancy fzf gh jq yq ripgrep telnet tldr wget node yarn git-interactive-rebase-tool prettyping ack ag btop atuin fx tabiew eza zoxide fd hub
-# others
-brew install WebPQuickLook borgbackup exiftool ffmpeg imagemagick rsync
-```
-
-## Others
+### chezmoi
 
 ```sh
-# zsh-autosuggestions (optional)
-# https://github.com/zsh-users/zsh-autosuggestions
-brew install zsh-autosuggestions
+chezmoi init --apply https://github.com/fabienduhamel/dotfiles
 ```
 
-[BrightIntosh](https://www.brightintosh.de/) app for XDR brightness on MacOS.
+[chezmoi documentation](https://www.chezmoi.io/user-guide/command-overview/)
+
+## Apps
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [VSCode](https://code.visualstudio.com/)
+- [Alfred](https://www.alfredapp.com/)
+- [Rectangle](https://rectangleapp.com/) - window management
+- [BrightIntosh](https://www.brightintosh.de/) - XDR brightness on MacOS
+- [Amphetamine](https://apps.apple.com/fr/app/amphetamine/id937984704?mt=12)
+- [Mos](https://mos.caldis.me/) - smooth mouse scrolling
