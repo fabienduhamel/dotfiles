@@ -53,7 +53,7 @@ require("lazy").setup({
 })
 
 require("catppuccin").setup({
-  flavour = "frappe",
+  flavour = "mocha",
   transparent_background = true, -- disables setting the background color.
 })
 
