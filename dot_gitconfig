@@ -1,0 +1,68 @@
+[user]
+    email = fabienduhamel@users.noreply.github.com
+    name = Fabien Duhamel
+
+[color]
+    ui = true
+
+[alias]
+    st    = status
+    ci    = commit
+    co    = checkout
+    oops  = commit --amend --no-edit
+    br    = branch
+    lbr   = branch -lvv
+    lg    = log --graph --pretty=tformat:'%Cred%h%C(auto)%d%C(reset) %s %C(yellow)<%an, %ar>%Creset'
+    ll    = log --pretty=format:'%C(red)%h%C(auto)%d %Creset%C(bold blue)%s %Creset%C(yellow)<%an, %ar>' --decorate --stat
+    blist = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold green)%(HEAD) %(color:bold white)%(refname:short)|%(color:bold magenta)%(upstream:trackshort)%(color:reset)|%(color:bold yellow)[%(upstream:short)]|%(color:reset)%(color:red)%(objectname:short)|%(color:bold blue)%(subject)%(color:reset) %(color:yellow)%(authorname) <%(authordate:relative)>' | column -ts'|'; }; r"
+    rbr   = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --color=always --sort=-committerdate --format='%(color:bold green)%(HEAD) %(color:bold white)%(refname:short)|%(color:reset)%(color:red)%(objectname:short)|%(color:bold blue)%(subject)%(color:reset) %(color:yellow)%(authorname) <%(authordate:relative)>' | grep -F 'origin/' | column -ts'|'; }; r"
+    brd          = branch -d
+    brpurge      = "!git fetch --prune && git branch -vv | grep -E \": disparue|: gone\" | sed 's/^.\\{2\\}//g' | cut -d' ' -f1 | xargs -n 1 git branch -d"
+    brpurgef     = "!git fetch --prune && git branch -vv | grep -E \": disparue|: gone\" | sed 's/^.\\{2\\}//g' | cut -d' ' -f1 | xargs -n 1 git branch -D"
+    wdiff        = diff --word-diff
+    cdiff        = diff --cached
+    ndiff        = diff --name-only
+    pushu        = push -u origin HEAD
+    assume       = update-index --assume-unchanged
+    unassume     = update-index --no-assume-unchanged
+    assumed      = "!git ls-files -v | grep ^h | cut -c 3-"
+#    unassumeall  = "!git assumed | xargs git update-index --no-assume-unchanged"
+#    assumeall    = "!git st -s | awk {'print $2'} | xargs git assume"
+    fl           = log -u --follow
+    la           = "!git config -l | grep alias | cut -c 7-"
+    up           = !git fetch && git rebase --autostash FETCH_HEAD
+    remove-tags  = "!f() { git tag -l ${1} | xargs -I % echo \"git push --delete origin % ; git tag -d %\" | sh; }; f"
+    open         = "!hub browse"
+
+[tag]
+    sort = -version:refname
+
+[core]
+    editor       = vim
+    whitespace   = -trailing-space
+    excludesfile = ~/.gitignore_global
+    pager        = diff-so-fancy | less --tabs=1,5 -R -F -X
+
+[diff]
+    mnemonicPrefix = true
+    renames        = true
+    wordRegex      = .
+
+[push]
+    default = simple
+
+[mergetool]
+    prompt = false
+
+[rebase]
+    autosquash = true
+
+[merge]
+	tool = meld
+[sequence]
+	editor = interactive-rebase-tool
+[remote "origin"]
+	prune = true
+
+[hub]
+	protocol = https
