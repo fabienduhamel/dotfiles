@@ -25,7 +25,7 @@ Download [MesloLG Nerd Font](https://www.nerdfonts.com/font-downloads).
 
 Import themes from `iterm2/` folder.
 
-### Setings
+### Settings
 
 Import settings from `iterm2/` folder.
 
