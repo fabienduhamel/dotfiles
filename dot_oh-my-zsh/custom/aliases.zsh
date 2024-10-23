@@ -1,5 +1,5 @@
 alias ls='eza --no-quotes'
-alias ll='ls -l --icons'
+alias ll='ls -l --icons always'
 alias top='btop'
 alias lal='ls -lAh'
 alias dua='du -sh `ls -A | grep . | cut -d "'" "'" -f6-`'
