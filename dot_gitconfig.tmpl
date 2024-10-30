@@ -1,6 +1,9 @@
 [user]
-    email = fabienduhamel@users.noreply.github.com
+    email = {{ .email | quote }}
     name = Fabien Duhamel
+    {{- if hasKey . "signingkey" }}
+    signingkey = {{ .signingkey | quote }}
+    {{- end }}
 
 [color]
     ui = true
@@ -58,11 +61,19 @@
     autosquash = true
 
 [merge]
-	tool = meld
+    tool = meld
+
 [sequence]
-	editor = interactive-rebase-tool
+    editor = interactive-rebase-tool
+
 [remote "origin"]
-	prune = true
+    prune = true
+
+[commit]
+    {{- if hasKey . "signingkey" }}
+    gpgsign = true
+    {{- end }}
 
 [hub]
-	protocol = https
+    protocol = https
+
