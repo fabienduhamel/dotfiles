@@ -13,7 +13,7 @@
 	<key>ColoredSelectedTabOutlineStrength</key>
 	<real>2</real>
 	<key>ColoredUnselectedTabTextProminence</key>
-	<real>0.80000001192092896</real>
+	<real>0.60000002384185791</real>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>Custom Color Presets</key>
@@ -5437,7 +5437,7 @@
 	<key>MinimalSplitPaneDividerProminence</key>
 	<real>1</real>
 	<key>MinimalTabStyleOutlineStrength</key>
-	<real>0.80000001192092896</real>
+	<real>0.40000000596046448</real>
 	<key>NeverWarnAboutMeta</key>
 	<true/>
 	<key>NeverWarnAboutMeta_selection</key>
