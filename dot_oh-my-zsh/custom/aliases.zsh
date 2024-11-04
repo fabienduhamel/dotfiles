@@ -163,16 +163,17 @@ function list_by_extension
   total_count=$(find . -type f | wc -l)
   
   # Print total size and count for the whole directory
-  echo -e "Total\t$total_count\t$total_size\t-"
+  echo -e "Extension\t$total_count\t$total_size\t-"
   echo "---"
   
   # Loop through each file extension and print its count, size, and mean file size
   for extension in $(find . -type f -name "$pattern" | sed -n 's/.*\.\([a-zA-Z0-9]*\)$/\1/p' | sort | uniq; echo "<none>"); do
     if [ "$extension" = "<none>" ]; then
       # Handle files without an extension
-      total=$(find . -type f ! -name "$pattern.*" -exec du -ch {} + | grep total$ | awk '{print $1}')
-      count=$(find . -type f ! -name "$pattern.*" | wc -l)
+      total=$(find . -type f ! -name "*.*" -name "$pattern" -exec du -ch {} + | grep total$ | awk '{print $1}')
+      count=$(find . -type f ! -name "*.*" -name "$pattern" | wc -l)
       total_bytes=$(find . -type f ! -name "*.*" -exec stat -f%z {} + | awk '{s+=$1} END {print s}')
+      echo $total
     else
       # Handle files with an extension
       total=$(find . -type f -name "$pattern.$extension" -exec du -ch {} + | grep total$ | awk '{print $1}')
@@ -192,7 +193,7 @@ function list_by_extension
     if [ $count -gt 0 ]; then
       mean_bytes=$((total_bytes / count))
     else
-      mean_bytes=0
+      continue
     fi
     
     # Convert mean bytes to human-readable format
