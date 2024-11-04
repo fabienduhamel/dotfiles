@@ -155,6 +155,12 @@ function pic-clean-jpegs
     done
 }
 
+function pic-normalize-filenames
+{
+  FILE_OR_DIR=${1:-.}
+  exiftool '-FileName<${DateTimeOriginal}_${Model;s/ /-/g}%-c.%e' -d "%Y%m%d_%H%M%S" $FILE_OR_DIR
+}
+
 function total_file_size_of_extension
 {
   [[ -z "$1" ]] && (echo "Usage:\n\t$0 <extension>" && return 1)
