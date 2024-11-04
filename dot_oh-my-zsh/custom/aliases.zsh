@@ -1,3 +1,4 @@
+alias cp='\gcp'
 alias ls='eza --no-quotes'
 alias ll='ls -l --icons always'
 alias top='btop'

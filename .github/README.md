@@ -15,6 +15,7 @@ brew install --cask iterm2
 
 # dev
 brew install \
+  coreutils \
   neovim \
   bat \
   curl \
