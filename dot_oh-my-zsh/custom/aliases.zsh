@@ -1,4 +1,5 @@
 alias cp='\gcp'
+alias rm='\grm'
 alias ls='eza --no-quotes'
 alias ll='ls -l --icons always'
 alias top='btop'
