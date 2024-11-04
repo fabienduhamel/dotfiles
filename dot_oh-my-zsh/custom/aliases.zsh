@@ -154,6 +154,12 @@ function pic-clean-jpegs
     done
 }
 
+function total_file_size_of_extension
+{
+  [[ -z "$1" ]] && (echo "Usage:\n\t$0 <extension>" && return 1)
+  find . -iname "*.$1" -exec du -ch {} + | grep total
+}
+
 function list_by_extension
 {
   pattern="${1:-*}"
