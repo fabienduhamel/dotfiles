@@ -156,6 +156,8 @@ function pic-clean-jpegs
 
 function list_by_extension
 {
+  pattern="${1:-*}"
+
   # Get total size and file count for the directory
   total_size=$(du -sh . | awk '{print $1}')
   total_count=$(find . -type f | wc -l)
@@ -165,24 +167,24 @@ function list_by_extension
   echo "---"
   
   # Loop through each file extension and print its count, size, and mean file size
-  for extension in $(find . -type f | sed -n 's/.*\.\([a-zA-Z0-9]*\)$/\1/p' | sort | uniq; echo "<none>"); do
+  for extension in $(find . -type f -name "$pattern" | sed -n 's/.*\.\([a-zA-Z0-9]*\)$/\1/p' | sort | uniq; echo "<none>"); do
     if [ "$extension" = "<none>" ]; then
       # Handle files without an extension
-      total=$(find . -type f ! -name "*.*" -exec du -ch {} + | grep total$ | awk '{print $1}')
-      count=$(find . -type f ! -name "*.*" | wc -l)
+      total=$(find . -type f ! -name "$pattern.*" -exec du -ch {} + | grep total$ | awk '{print $1}')
+      count=$(find . -type f ! -name "$pattern.*" | wc -l)
       total_bytes=$(find . -type f ! -name "*.*" -exec stat -f%z {} + | awk '{s+=$1} END {print s}')
     else
       # Handle files with an extension
-      total=$(find . -type f -name "*.$extension" -exec du -ch {} + | grep total$ | awk '{print $1}')
-      count=$(find . -type f -name "*.$extension" | wc -l)
+      total=$(find . -type f -name "$pattern.$extension" -exec du -ch {} + | grep total$ | awk '{print $1}')
+      count=$(find . -type f -name "$pattern.$extension" | wc -l)
       
       # Use platform-specific stat command to get file size in bytes
       if [[ "$OSTYPE" == "darwin"* ]]; then
         # macOS/BSD stat
-        total_bytes=$(find . -type f -name "*.$extension" -exec stat -f%z {} + | awk '{s+=$1} END {print s}')
+        total_bytes=$(find . -type f -name "$pattern.$extension" -exec stat -f%z {} + | awk '{s+=$1} END {print s}')
       else
         # GNU/Linux stat
-        total_bytes=$(find . -type f -name "*.$extension" -exec stat --format="%s" {} + | awk '{s+=$1} END {print s}')
+        total_bytes=$(find . -type f -name "$pattern.$extension" -exec stat --format="%s" {} + | awk '{s+=$1} END {print s}')
       fi
     fi
     
