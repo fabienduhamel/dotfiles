@@ -45,7 +45,7 @@ brew install \
   chezmoi
 
 # --- others ---
-brew install WebPQuickLook borgbackup exiftool ffmpeg imagemagick rsync
+brew install WebPQuickLook borgbackup exiftool ffmpeg imagemagick rsync jdupes
 
 # zsh-autosuggestions (optional)
 # https://github.com/zsh-users/zsh-autosuggestions
