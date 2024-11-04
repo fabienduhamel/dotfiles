@@ -104,6 +104,11 @@ if [ "$(uname -s)" = "Darwin" ]; then
     alias python="/usr/bin/python3"
 fi
 
+function replace_filename_spaces_with
+{
+  for f in *\ *; do mv "$f" "${f// /$1}"; done
+}
+
 function vv
 {
     [ -z "$1" ] && local FILE=$(fzf) || local FILE=$(cd "$1" && fzf)
