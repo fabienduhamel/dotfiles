@@ -42,6 +42,7 @@ brew install \
   zoxide \
   fd \
   hub \
+  ffurrer2/tap/semver \
   chezmoi
 
 # --- others ---
