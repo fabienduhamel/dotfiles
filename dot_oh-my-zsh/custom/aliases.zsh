@@ -12,7 +12,7 @@ alias ping="prettyping"
 alias cat="bat -pp --color=always --theme=ansi"
 alias less="bat -p --color=always --theme=ansi"
 alias please='sudo $(fc -ln -1)'
-lias colorpalette='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
+alias colorpalette='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
 
 # Mac OS X
 if [ "$(uname -s)" = "Darwin" ]; then
