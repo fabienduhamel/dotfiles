@@ -1,5 +1,3 @@
-alias cp='\gcp'
-alias rm='\grm'
 alias ls='eza --no-quotes'
 alias ll='ls -l --icons always'
 alias top='btop'
@@ -18,6 +16,8 @@ alias colorpalette='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)
 if [ "$(uname -s)" = "Darwin" ]; then
     alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a -s"
     alias python="/usr/bin/python3"
+    alias cp='\gcp'
+    alias rm='\grm'
 fi
 
 # Linux
