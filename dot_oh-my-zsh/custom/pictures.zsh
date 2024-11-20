@@ -83,3 +83,40 @@ function pic-exif-cp {
     fi
   done
 }
+
+# a generic ffmpeg command to encode movies
+function movie_compress
+{
+  FILE=$1
+
+  codec_value=${CODEC:-libx264}
+  preset_value=${PRESET:-medium}
+
+  if [ -z "$TUNE" ]; then
+    tune_arg=()
+  else
+    tune_arg=("-tune" "${TUNE}")
+  fi
+
+  if [ "$codec_value" = "libx265" ]; then
+    extra_cmd=("-vtag" "hvc1")
+    crf_value=${CRF:-17}
+  elif [ "$codec_value" = "libx264" ]; then
+    extra_cmd=()
+    crf_value=${CRF:-23}
+  fi
+
+  ffmpeg -i $FILE -c:v ${codec_value} -movflags use_metadata_tags -map_metadata 0 -crf ${crf_value} -preset ${preset_value} ${tune_arg[@]} -pix_fmt yuv420p -vsync 0 -c:a copy ${extra_cmd[@]} ${FILE%.*}-${codec_value}-crf${crf_value}-${preset_value}-${TUNE:-notune}.MP4
+}
+
+# a specific ffmpeg call to reduce movies size with the best values found for Lumix G80 movies
+function movie_compress_lumix_vids
+{
+  IFS=$'\n'; for file in $(ls *.MP4 | grep -v crf ); do
+    CODEC=libx265 \
+      CRF=26 \
+      TUNE=grain \
+      PRESET=medium \
+      movie_compress $file
+  done
+}
