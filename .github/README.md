@@ -4,7 +4,7 @@ Contains mandatory dotfiles and other stuff for personal dev :)
 
 ## Setup
 
-Run:
+### MacOS
 
 ```sh
 # brew install (https://brew.sh/)
@@ -15,6 +15,7 @@ brew install --cask iterm2
 
 # dev
 brew install \
+  zsh \
   coreutils \
   neovim \
   bat \
@@ -53,6 +54,47 @@ brew install WebPQuickLook borgbackup exiftool ffmpeg imagemagick rsync jdupes
 brew install zsh-autosuggestions
 ```
 
+### Linux server
+
+```sh
+sudo apt install \
+  zsh \
+  bat \
+  curl \
+  fzf \
+  gh \
+  jq \
+  yq \
+  ripgrep \
+  telnet \
+  tldr \
+  wget \
+  nodejs \
+  npm \
+  prettyping \
+  ack \
+  silversearcher-ag \
+  btop \
+  zoxide \
+  fd-find \
+  hub \
+  python3-semver
+
+sudo npm install -g diff-so-fancy
+
+# neovim
+# follow nvim.appimage installation here: https://github.com/neovim/neovim-releases/releases
+sudo apt install fuse
+curl -XGET https://github.com/neovim/neovim-releases/releases/latest/download/nvim.appimage -o nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+
+# cargo
+sudo apt-get install protobuf-compiler
+curl https://sh.rustup.rs -sSf | sh
+
+cargo install atuin eza
+```
+
 ### ZSH
 
 Follow:
@@ -75,8 +117,18 @@ Follow [Lazyvim installation](https://www.lazyvim.org/installation).
 
 ### chezmoi
 
+Create `~/.config/chezmoi/chezmoi.toml`:
+
+```toml
+[data]
+  email = "<email>"
+```
+
 ```sh
+# MacOS (installed with brew)
 chezmoi init --apply https://github.com/fabienduhamel/dotfiles
+# Linux (not available with apt)
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply fabienduhamel
 ```
 
 [chezmoi documentation](https://www.chezmoi.io/user-guide/command-overview/)
@@ -90,3 +142,4 @@ chezmoi init --apply https://github.com/fabienduhamel/dotfiles
 - [BrightIntosh](https://www.brightintosh.de/) - XDR brightness on MacOS
 - [Amphetamine](https://apps.apple.com/fr/app/amphetamine/id937984704?mt=12)
 - [Mos](https://mos.caldis.me/) - smooth mouse scrolling
+- [AltTab](https://alt-tab-macos.netlify.app/)

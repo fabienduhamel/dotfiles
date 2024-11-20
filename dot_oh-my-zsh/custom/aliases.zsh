@@ -23,6 +23,7 @@ fi
 # Linux
 if [ "$(uname -s)" = "Linux" ]; then
   alias clearswap="su -c 'swapoff -a && swapon -a'"
+  alias bat="batcat"
 fi
 
 function nexttag
