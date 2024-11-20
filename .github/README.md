@@ -85,8 +85,9 @@ sudo npm install -g diff-so-fancy
 # neovim
 # follow nvim.appimage installation here: https://github.com/neovim/neovim-releases/releases
 sudo apt install fuse
-curl -XGET https://github.com/neovim/neovim-releases/releases/latest/download/nvim.appimage -o nvim.appimage
+curl -L -XGET https://github.com/neovim/neovim-releases/releases/latest/download/nvim.appimage -o nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
+sudo chmod 755 /usr/local/bin/nvim
 
 # cargo
 sudo apt-get install protobuf-compiler
