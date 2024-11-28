@@ -1,0 +1,7 @@
+WebPQuickLook
+borgbackup
+exiftool
+ffmpeg
+imagemagick
+rsync
+jdupes

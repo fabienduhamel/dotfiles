@@ -14,40 +14,10 @@ Contains mandatory dotfiles and other stuff for personal dev :)
 brew install --cask iterm2
 
 # dev
-brew install \
-  zsh \
-  coreutils \
-  neovim \
-  bat \
-  curl \
-  diff-so-fancy \
-  fzf \
-  gh \
-  jq \
-  yq \
-  ripgrep \
-  telnet \
-  tldr \
-  wget \
-  node \
-  yarn \
-  git-interactive-rebase-tool \
-  prettyping \
-  ack \
-  ag \
-  btop \
-  atuin \
-  fx \
-  tabiew \
-  eza \
-  zoxide \
-  fd \
-  hub \
-  ffurrer2/tap/semver \
-  chezmoi
+xargs brew install < brew-apps.txt
 
 # --- others ---
-brew install WebPQuickLook borgbackup exiftool ffmpeg imagemagick rsync jdupes
+xargs brew install < brew-extras.txt
 
 # zsh-autosuggestions (optional)
 # https://github.com/zsh-users/zsh-autosuggestions
@@ -57,28 +27,7 @@ brew install zsh-autosuggestions
 ### Linux server
 
 ```sh
-sudo apt install \
-  zsh \
-  bat \
-  curl \
-  fzf \
-  gh \
-  jq \
-  yq \
-  ripgrep \
-  telnet \
-  tldr \
-  wget \
-  nodejs \
-  npm \
-  prettyping \
-  ack \
-  silversearcher-ag \
-  btop \
-  zoxide \
-  fd-find \
-  hub \
-  python3-semver
+xargs sudo apt install < apt-apps.txt
 
 sudo npm install -g diff-so-fancy
 
