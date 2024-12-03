@@ -89,13 +89,13 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply fabienduhamel
 
 [chezmoi documentation](https://www.chezmoi.io/user-guide/command-overview/)
 
-## Apps
+## Desktop apps
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [VSCode](https://code.visualstudio.com/)
 - [Alfred](https://www.alfredapp.com/)
 - [Rectangle](https://rectangleapp.com/) - window management
-- [BrightIntosh](https://www.brightintosh.de/) - XDR brightness on MacOS
 - [Amphetamine](https://apps.apple.com/fr/app/amphetamine/id937984704?mt=12)
 - [Mos](https://mos.caldis.me/) - smooth mouse scrolling
 - [AltTab](https://alt-tab-macos.netlify.app/)
+- [BetterDisplay](https://github.com/waydabber/BetterDisplay)
