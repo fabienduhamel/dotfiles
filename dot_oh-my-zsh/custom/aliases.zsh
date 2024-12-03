@@ -40,6 +40,11 @@ function nexttag
     fi
 }
 
+function show_function
+{
+  declare -f "$1" | less
+}
+
 function meteo
 {
     curl -4 "wttr.in/$1"
