@@ -163,3 +163,5 @@ command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 # set nvim editor by default
 command -v nvim >/dev/null && export EDITOR=nvim
 
+# uv
+[[ ! -f ~/.local/bin/env ]] || source "$HOME/.local/bin/env"

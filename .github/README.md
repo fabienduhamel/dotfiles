@@ -16,6 +16,9 @@ brew install --cask iterm2
 # dev
 xargs brew install < brew-apps.txt
 
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # --- others ---
 xargs brew install < brew-extras.txt
 
@@ -30,6 +33,9 @@ brew install zsh-autosuggestions
 xargs sudo apt install < apt-apps.txt
 
 sudo npm install -g diff-so-fancy
+
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # neovim
 # follow nvim.appimage installation here: https://github.com/neovim/neovim-releases/releases
