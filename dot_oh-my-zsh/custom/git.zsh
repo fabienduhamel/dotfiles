@@ -36,8 +36,8 @@ function gcfrb
         echo "Pattern \"$PATTERN\" not found in git log."
         return 2
     fi
-
-    git commit --fixup :/$PATTERN && GIT_SEQUENCE_EDITOR=true git rebase -ip $REBASE_HASH
+    
+    git commit --fixup :/$PATTERN && GIT_SEQUENCE_EDITOR=true git rebase -i --rebase-merges $REBASE_HASH
 }
 
 # git tag and push
