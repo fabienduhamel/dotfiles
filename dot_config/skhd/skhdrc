@@ -1,0 +1,23 @@
+# mimics Rectangle behavior but it flickers a lot
+# will be useful if Rectangle becomes unmaintained or incompatible with Yabai
+#ctrl + alt - left : ~/.config/skhd/yabai_move_window_left.sh
+#ctrl + alt - right : ~/.config/skhd/yabai_move_window_right.sh
+#ctrl + alt - c : ~/.config/skhd/yabai_center_window.sh
+#ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
+
+# move window to another space
+ctrl + alt + shift - left : if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m window --space prev --focus; fi
+ctrl + alt + shift - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m window --space next --focus; fi
+ctrl - left : if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m space --focus prev; fi
+ctrl - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m space --focus next; fi
+
+# apps shortcuts
+ralt - b : open -a Google\ Chrome
+ralt - o : open -a Obsidian
+ralt - t : open -a iTerm
+
+ralt - 0x12 : open -a Google\ Chrome # ralt + &
+ralt - 0x13 : open -a iTerm # ralt + é
+ralt - 0x14 : open -a Visual\ Studio\ Code # ralt + "
+ralt - 0x15 : open -a Obsidian # ralt + '
+

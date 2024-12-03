@@ -71,6 +71,13 @@ Download [MesloLG Nerd Font](https://www.nerdfonts.com/font-downloads).
 
 Follow [Lazyvim installation](https://www.lazyvim.org/installation).
 
+### Window management
+
+1. Install [skhd](https://github.com/koekeishiya/skhd)
+2. Install [Rectangle](https://rectangleapp.com/)
+3. Install [Yabai](https://github.com/koekeishiya/yabai)
+4. Install [JankyBorders](https://github.com/FelixKratz/JankyBorders)
+
 ### chezmoi
 
 Create `~/.config/chezmoi/chezmoi.toml`:
