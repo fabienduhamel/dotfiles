@@ -21,3 +21,5 @@ ralt - 0x13 : open -a iTerm # ralt + é
 ralt - 0x14 : open -a Visual\ Studio\ Code # ralt + "
 ralt - 0x15 : open -a Obsidian # ralt + '
 
+cmd - f12 : ~/Dev/boilerplate/bash/mac-dns-switcher.sh 127.0.0.1
+
