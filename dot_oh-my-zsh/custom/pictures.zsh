@@ -84,6 +84,11 @@ function pic-exif-cp {
   done
 }
 
+function pic-rename-from-datetimeoriginal
+{
+  exiftool '-FileName<${DateTimeOriginal}%-c.%e' -d "%Y%m%d-%H%M%S" $1
+}
+
 # a generic ffmpeg command to encode movies
 function movie_compress
 {
