@@ -14,10 +14,10 @@ ctrl - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"
 # apps shortcuts
 ralt - b : open -a Google\ Chrome
 ralt - o : open -a Obsidian
-ralt - t : open -a iTerm
+ralt - t : open -a WezTerm
 
 ralt - 0x12 : open -a Google\ Chrome # ralt + &
-ralt - 0x13 : open -a iTerm # ralt + é
+ralt - 0x13 : open -a WezTerm # ralt + é
 ralt - 0x14 : open -a Visual\ Studio\ Code # ralt + "
 ralt - 0x15 : open -a Obsidian # ralt + '
 

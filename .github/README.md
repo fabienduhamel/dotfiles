@@ -12,6 +12,8 @@ Contains mandatory dotfiles and other stuff for personal dev :)
 
 # iterm2 (https://formulae.brew.sh/cask/iterm2)
 brew install --cask iterm2
+# or WezTerm
+brew install --cask wezterm
 
 # dev
 xargs brew install < brew-apps.txt
@@ -62,7 +64,7 @@ Follow:
 
 Download [MesloLG Nerd Font](https://www.nerdfonts.com/font-downloads).
 
-### iterm2
+### iTerm2
 
 - Import themes from `iterm2/` folder
 - Import settings from `iterm2/` folder
