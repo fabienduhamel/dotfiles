@@ -131,19 +131,20 @@ bindkey "^p" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 bindkey "^n" down-line-or-beginning-search
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# fix executable, ack installs itself as ack-grep on mint
-command -v ack-grep &>/dev/null && FZF_EXECUTABLE="ack-grep" || FZF_EXECUTABLE="ack"
-export FZF_DEFAULT_COMMAND="$FZF_EXECUTABLE -g '' --ignore-dir .git --ignore-dir Library --ignore-dir Cache --ignore-dir app/cache --ignore-dir .Trash"
-export FZF_DEFAULT_OPTS='--height 15 --reverse --border'
-
 # brew
 command -v /opt/homebrew/bin/brew >/dev/null && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # helm completion
 command -v helm >/dev/null && source <(helm completion zsh)
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
+
+# fix executable, ack installs itself as ack-grep on mint
+command -v ack-grep &>/dev/null && FZF_EXECUTABLE="ack-grep" || FZF_EXECUTABLE="ack"
+export FZF_DEFAULT_COMMAND="$FZF_EXECUTABLE -g '' --ignore-dir .git --ignore-dir Library --ignore-dir Cache --ignore-dir app/cache --ignore-dir .Trash"
+export FZF_DEFAULT_OPTS='--height 15 --reverse --border'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/fabien/Dev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fabien/Dev/google-cloud-sdk/path.zsh.inc'; fi
