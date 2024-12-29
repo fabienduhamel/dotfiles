@@ -13,7 +13,7 @@ config = {
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
 	send_composed_key_when_left_alt_is_pressed = true,
-	send_composed_key_when_right_alt_is_pressed = false,
+	send_composed_key_when_right_alt_is_pressed = true,
 	use_dead_keys = false,
 	initial_rows = 45,
 	initial_cols = 180,
@@ -49,10 +49,31 @@ config.keys = {
 		key = "o",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
+	-- pane resizing
+	{
+		mods = "CTRL|SHIFT",
+		key = "UpArrow",
+		action = wezterm.action.AdjustPaneSize({ "Up", 1 }),
+	},
+	{
+		mods = "CTRL|SHIFT",
+		key = "DownArrow",
+		action = wezterm.action.AdjustPaneSize({ "Down", 1 }),
+	},
+	{
+		mods = "CTRL|SHIFT",
+		key = "LeftArrow",
+		action = wezterm.action.AdjustPaneSize({ "Left", 1 }),
+	},
+	{
+		mods = "CTRL|SHIFT",
+		key = "RightArrow",
+		action = wezterm.action.AdjustPaneSize({ "Right", 1 }),
+	},
 	{
 		mods = "SUPER",
 		key = "w",
-		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+		action = wezterm.action.CloseCurrentPane({ confirm = false }),
 	},
 	{
 		mods = "SUPER|SHIFT",
@@ -78,26 +99,6 @@ config.keys = {
 		mods = "SUPER",
 		key = "DownArrow",
 		action = wezterm.action.ActivatePaneDirection("Down"),
-	},
-	{
-		mods = "SUPER|CTRL|ALT|SHIFT",
-		key = "[",
-		action = wezterm.action.SwitchWorkspaceRelative(-1),
-	},
-	{
-		mods = "SUPER|CTRL|ALT|SHIFT",
-		key = "]",
-		action = wezterm.action.SwitchWorkspaceRelative(1),
-	},
-	{
-		key = "9",
-		mods = "SUPER|CTRL|ALT|SHIFT",
-		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-	},
-	{
-		key = "k",
-		mods = "SUPER",
-		action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
 	},
 }
 
