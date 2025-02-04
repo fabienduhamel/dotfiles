@@ -125,3 +125,10 @@ function movie_compress_lumix_vids
       movie_compress $file
   done
 }
+
+function compress_for_google_photos
+{
+  jpegoptim -m70 *.jpg
+  jpegoptim -m70 *.JPG
+  movie_compress_lumix_vids
+}
