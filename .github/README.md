@@ -62,7 +62,7 @@ Follow:
 
 ### Fonts
 
-Download [MesloLG Nerd Font](https://www.nerdfonts.com/font-downloads).
+Download [MesloLGL Nerd Font](https://www.nerdfonts.com/font-downloads).
 
 ### iTerm2
 
@@ -78,7 +78,11 @@ Follow [Lazyvim installation](https://www.lazyvim.org/installation).
 1. Install [skhd](https://github.com/koekeishiya/skhd)
 2. Install [Rectangle](https://rectangleapp.com/)
 3. Install [Yabai](https://github.com/koekeishiya/yabai)
+
+Optional (for window borders):
 4. Install [JankyBorders](https://github.com/FelixKratz/JankyBorders)
+
+Setup your wallpaper!
 
 ### chezmoi
 
