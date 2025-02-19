@@ -7,5 +7,5 @@ sudo yabai --load-sa
 yabai -m config mouse_follows_focus off
 
 # needs JankyBorders
-borders active_color=0xfff7a710 inactive_color=0xff494d64 width=6.0 &
+# borders active_color=0xfff7a710 inactive_color=0xff494d64 width=6.0 &
 
