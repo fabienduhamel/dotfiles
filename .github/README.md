@@ -112,3 +112,6 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply fabienduhamel
 - [Mos](https://mos.caldis.me/) - smooth mouse scrolling
 - [AltTab](https://alt-tab-macos.netlify.app/)
 - [BetterDisplay](https://github.com/waydabber/BetterDisplay)
+- [Obsidian](https://obsidian.md/)
+- [Stats](https://github.com/exelban/stats)
+- [Itsycal](https://www.mowglii.com/itsycal/)
