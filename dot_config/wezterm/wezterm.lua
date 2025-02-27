@@ -24,6 +24,11 @@ config = {
 -- Keybindings
 config.keys = {
 	{
+		key = "-",
+		mods = "CTRL",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
 		mods = "OPT",
 		key = "n",
 		action = act.SendKey({ key = "~" }),
