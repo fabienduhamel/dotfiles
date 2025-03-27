@@ -21,6 +21,30 @@ config = {
 	macos_window_background_blur = 20,
 }
 
+config.mouse_bindings = {
+	-- Change the default click behavior so that it only selects
+	-- text and doesn't open hyperlinks
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "NONE",
+		action = act.CompleteSelection("PrimarySelection"),
+	},
+
+	-- and make CTRL-Click open hyperlinks
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CMD",
+		action = act.OpenLinkAtMouseCursor,
+	},
+
+	-- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+	{
+		event = { Down = { streak = 1, button = "Left" } },
+		mods = "CMD",
+		action = act.Nop,
+	},
+}
+
 -- Keybindings
 config.keys = {
 	{
