@@ -19,3 +19,4 @@ zoxide
 fd-find
 hub
 python3-semver
+watch

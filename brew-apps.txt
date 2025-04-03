@@ -27,4 +27,5 @@ zoxide
 fd
 hub
 ffurrer2/tap/semver
+watch
 chezmoi
