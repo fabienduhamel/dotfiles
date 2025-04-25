@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# copy the data to modify to a temporary file
+tmpfile=$(mktemp)
+trap "rm -f ${tmpfile}" EXIT
+cat > "${tmpfile}"
+
+maintenance_section=$(sed -n '/\[maintenance\]/,/^\[/{/\[maintenance\]/!p;}' ${tmpfile})
+
+cat <<EOF
+[include]
+    path = ~/.gitconfig.local
+EOF
+
+[ ! -z "$maintenance_section" ] && echo "
+[maintenance]
+$maintenance_section
+" || true
+
