@@ -13,6 +13,7 @@ alias please='sudo $(fc -ln -1)'
 alias colorpalette='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
 
 alias dc='docker compose'
+alias drun='docker run --rm -ti --entrypoint sh'
 
 # Mac OS X
 if [ "$(uname -s)" = "Darwin" ]; then
