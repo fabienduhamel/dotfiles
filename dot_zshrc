@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git safe-paste composer docker docker-compose aws helm kubectl)
+plugins=(git safe-paste composer docker docker-compose aws helm kubectl terraform terragrunt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -146,12 +146,6 @@ command -v ack-grep &>/dev/null && FZF_EXECUTABLE="ack-grep" || FZF_EXECUTABLE="
 export FZF_DEFAULT_COMMAND="$FZF_EXECUTABLE -g '' --ignore-dir .git --ignore-dir Library --ignore-dir Cache --ignore-dir app/cache --ignore-dir .Trash"
 export FZF_DEFAULT_OPTS='--height 15 --reverse --border'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/fabien/Dev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fabien/Dev/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/fabien/Dev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fabien/Dev/google-cloud-sdk/completion.zsh.inc'; fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -166,3 +160,9 @@ command -v nvim >/dev/null && export EDITOR=nvim
 
 # uv
 [[ ! -f ~/.local/bin/env ]] || source "$HOME/.local/bin/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/fabien/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fabien/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/fabien/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fabien/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

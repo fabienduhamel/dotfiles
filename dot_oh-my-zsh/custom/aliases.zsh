@@ -15,6 +15,15 @@ alias colorpalette='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)
 alias dc='docker compose'
 alias drun='docker run --rm -ti --entrypoint sh'
 
+# terraform / terragrunt
+alias tg='terragrunt'
+alias tgi='terragrunt init'
+alias tgp='terragrunt plan'
+alias tga='terragrunt apply'
+alias tgia='terragrunt init --all'
+alias tgpa='terragrunt plan --all'
+alias tgaa='terragrunt apply --all'
+
 # Mac OS X
 if [ "$(uname -s)" = "Darwin" ]; then
     alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a -s"
