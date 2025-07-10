@@ -60,6 +60,12 @@ Follow:
 - [https://ohmyz.sh/#install](https://ohmyz.sh/#install)
 - [https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation)
 
+- Add plugins:
+
+```sh
+git clone https://github.com/jkavan/terragrunt-oh-my-zsh-plugin ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/terragrunt
+```
+
 ### Fonts
 
 Download [MesloLGL Nerd Font](https://www.nerdfonts.com/font-downloads).
