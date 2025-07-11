@@ -23,6 +23,8 @@ alias tga='terragrunt apply'
 alias tgia='terragrunt init --all'
 alias tgpa='terragrunt plan --all'
 alias tgaa='terragrunt apply --all'
+alias tgsc='terragrunt stack clean'
+alias tgsg='terragrunt stack generate'
 
 # Mac OS X
 if [ "$(uname -s)" = "Darwin" ]; then
