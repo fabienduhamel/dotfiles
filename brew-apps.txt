@@ -29,3 +29,4 @@ hub
 ffurrer2/tap/semver
 watch
 chezmoi
+dive

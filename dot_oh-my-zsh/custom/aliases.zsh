@@ -23,6 +23,7 @@ alias tga='terragrunt apply'
 alias tgia='terragrunt init --all'
 alias tgpa='terragrunt plan --all'
 alias tgaa='terragrunt apply --all'
+alias tgda='terragrunt destroy --all'
 alias tgsc='terragrunt stack clean'
 alias tgsg='terragrunt stack generate'
 
