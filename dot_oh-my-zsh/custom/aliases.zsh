@@ -27,6 +27,8 @@ alias tgda='terragrunt destroy --all'
 alias tgsc='terragrunt stack clean'
 alias tgsg='terragrunt stack generate'
 
+alias k9s="k9s --screen-dump-dir ~/Desktop --splashless"
+
 # Mac OS X
 if [ "$(uname -s)" = "Darwin" ]; then
     alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a -s"
