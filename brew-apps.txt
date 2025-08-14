@@ -30,3 +30,5 @@ ffurrer2/tap/semver
 watch
 chezmoi
 dive
+k9s
+
