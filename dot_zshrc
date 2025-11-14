@@ -166,3 +166,7 @@ if [ -f '/Users/fabien/Dev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fabi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/fabien/Dev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fabien/Dev/google-cloud-sdk/completion.zsh.inc'; fi
+
+# The next line enables pip installs
+[[ -d '/Library/Frameworks/Python.framework/Versions/3.12/bin' ]] && export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.12/bin
+
