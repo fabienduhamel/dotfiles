@@ -117,7 +117,8 @@ function movie_compress
 # a specific ffmpeg call to reduce movies size with the best values found for Lumix G80 movies
 function movie_compress_lumix_vids
 {
-  IFS=$'\n'; for file in $(ls *.MP4 | grep -v crf ); do
+  EXTENSION=$1
+  IFS=$'\n'; for file in $(ls *.$1 | grep -v crf ); do
     CODEC=libx265 \
       CRF=26 \
       TUNE=grain \
@@ -128,7 +129,10 @@ function movie_compress_lumix_vids
 
 function compress_for_google_photos
 {
+  mogrify -resize 60% *.jpg
+  mogrify -resize 60% *.JPG
   jpegoptim -m70 *.jpg
   jpegoptim -m70 *.JPG
-  movie_compress_lumix_vids
+  movie_compress_lumix_vids mp4
+  movie_compress_lumix_vids MP4
 }
