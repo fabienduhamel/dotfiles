@@ -85,8 +85,7 @@ Follow [Lazyvim installation](https://www.lazyvim.org/installation).
 2. Install [Rectangle](https://rectangleapp.com/)
 3. Install [Yabai](https://github.com/koekeishiya/yabai)
 
-Optional (for window borders):
-4. Install [JankyBorders](https://github.com/FelixKratz/JankyBorders)
+Optional (for window borders): 4. Install [JankyBorders](https://github.com/FelixKratz/JankyBorders)
 
 Setup your wallpaper!
 
@@ -121,3 +120,4 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply fabienduhamel
 - [Obsidian](https://obsidian.md/)
 - [Stats](https://github.com/exelban/stats)
 - [Itsycal](https://www.mowglii.com/itsycal/)
+- [Azayaka](https://github.com/Mnpn/Azayaka) - screen capture
