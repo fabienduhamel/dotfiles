@@ -20,6 +20,7 @@ ack
 ag
 btop
 atuin
+tw93/tap/mole
 fx
 tabiew
 eza
