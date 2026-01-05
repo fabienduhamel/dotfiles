@@ -6,10 +6,10 @@
 #ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
 
 # move window to another space
-ctrl + alt + shift - left : if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m window --space prev --focus; fi
-ctrl + alt + shift - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m window --space next --focus; fi
-ctrl - left : if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m space --focus prev; fi
-ctrl - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m space --focus next; fi
+# ctrl + alt + shift - left : if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m window --space prev --focus; fi
+# ctrl + alt + shift - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m window --space next --focus; fi
+# ctrl - left : if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m space --focus prev; fi
+# ctrl - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m space --focus next; fi
 
 # apps shortcuts
 ralt - b : open -a Google\ Chrome
