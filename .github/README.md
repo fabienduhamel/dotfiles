@@ -111,8 +111,8 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply fabienduhamel
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [VSCode](https://code.visualstudio.com/)
-- [Alfred](https://www.alfredapp.com/)
-- [Rectangle](https://rectangleapp.com/) - window management
+- [Raycast](https://www.raycast.com/) or [Alfred](https://www.alfredapp.com/)
+- [Rectangle](https://rectangleapp.com/) - window management (included in Raycast)
 - [Amphetamine](https://apps.apple.com/fr/app/amphetamine/id937984704?mt=12)
 - [Mos](https://mos.caldis.me/) - smooth mouse scrolling
 - [AltTab](https://alt-tab-macos.netlify.app/)
