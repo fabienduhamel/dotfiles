@@ -175,6 +175,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Autocompletion Terragrunt
 if command -v terragrunt > /dev/null; then
-  eval "$(terragrunt --install-autocomplete)"
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C $(which terragrunt) terragrunt
 fi
 
