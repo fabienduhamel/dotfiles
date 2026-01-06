@@ -170,3 +170,6 @@ if [ -f '/Users/fabien/Dev/google-cloud-sdk/completion.zsh.inc' ]; then . '/User
 # The next line enables pip installs
 [[ -d '/Library/Frameworks/Python.framework/Versions/3.12/bin' ]] && export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.12/bin
 
+# Krew setup
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
