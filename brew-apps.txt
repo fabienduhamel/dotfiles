@@ -1,4 +1,5 @@
 zsh
+zsh-syntax-highlighting
 coreutils
 neovim
 bat
