@@ -21,6 +21,15 @@ config = {
 	macos_window_background_blur = 20,
 }
 
+config.colors = {
+	split = "#DADADA",
+}
+
+config.inactive_pane_hsb = {
+	brightness = 0.6,
+	saturation = 1.0,
+}
+
 config.mouse_bindings = {
 	-- Change the default click behavior so that it only selects
 	-- text and doesn't open hyperlinks
