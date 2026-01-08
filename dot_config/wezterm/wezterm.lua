@@ -26,7 +26,7 @@ config.colors = {
 }
 
 config.inactive_pane_hsb = {
-	brightness = 0.6,
+	brightness = 0.7,
 	saturation = 1.0,
 }
 
