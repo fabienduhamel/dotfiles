@@ -1,0 +1,27 @@
+gui:
+  authorColors:
+    '*': '#a2dce0'
+  theme:
+    activeBorderColor:
+      - "#b4befe" # Lavender
+      - "bold"
+    inactiveBorderColor:
+      - "#a6adc8" # Subtext0
+    optionsTextColor:
+      - "#89b4fa" # Blue
+    selectedLineBgColor:
+      # - "#313244" # Surface0
+      - "#4a4b61" # Surface0
+    selectedRangeBgColor:
+      # - "#313244" # Surface0
+      - "#4a4b61" # Surface0
+    cherryPickedCommitBgColor:
+      - "#94e2d5" # Teal
+    cherryPickedCommitFgColor:
+      - "#89b4fa" # Blue
+    unstagedChangesColor:
+      - "#f38ba8" # Red
+    defaultFgColor:
+      - "#cdd6f4" # Text
+    searchingActiveBorderColor:
+      - "#f9e2af" # Yellow
