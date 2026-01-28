@@ -9,4 +9,4 @@ vim.opt.listchars = {
   nbsp = "+",
 }
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 12
