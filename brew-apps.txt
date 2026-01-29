@@ -16,6 +16,7 @@ wget
 node
 yarn
 lazygit
+lazydocker
 git-interactive-rebase-tool
 prettyping
 ack
