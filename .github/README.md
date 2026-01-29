@@ -48,6 +48,9 @@ mv nvim-linux-x86_64.appimage ~/.local/bin/nvim
 chmod +x ~/.local/bin/nvim
 # lazyvim: https://www.lazyvim.org/installation
 
+# lazydocker: https://github.com/jesseduffield/lazydocker
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
 # cargo
 sudo apt-get install protobuf-compiler
 curl https://sh.rustup.rs -sSf | sh
