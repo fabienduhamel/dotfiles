@@ -42,9 +42,11 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 # neovim
 # follow nvim.appimage installation here: https://github.com/neovim/neovim-releases/releases
 sudo apt install fuse
-curl -L -XGET https://github.com/neovim/neovim-releases/releases/latest/download/nvim.appimage -o nvim.appimage
-sudo mv nvim.appimage /usr/local/bin/nvim
-sudo chmod 755 /usr/local/bin/nvim
+# version to update if necessary
+curl -LO https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.appimage
+mv nvim-linux-x86_64.appimage ~/.local/bin/nvim
+chmod +x ~/.local/bin/nvim
+# lazyvim: https://www.lazyvim.org/installation
 
 # cargo
 sudo apt-get install protobuf-compiler
