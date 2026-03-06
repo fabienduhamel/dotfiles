@@ -14,6 +14,10 @@ alias colorpalette='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)
 
 alias dc='docker compose'
 alias drun='docker run --rm -ti --entrypoint sh'
+alias drunamd='docker run --platform=linux/amd64 --rm -ti --entrypoint sh'
+
+# git
+alias gap="ga -p ."
 
 # terraform / terragrunt
 alias tg='terragrunt'
