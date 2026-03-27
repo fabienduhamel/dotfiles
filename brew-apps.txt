@@ -36,4 +36,3 @@ chezmoi
 dive
 k9s
 espanso
-

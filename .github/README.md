@@ -21,6 +21,11 @@ xargs brew install < brew-apps.txt
 # uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# Claude
+brew install --cask claude-code
+brew install rtk
+rtk init -g
+
 # --- others ---
 xargs brew install < brew-extras.txt
 
@@ -38,6 +43,11 @@ sudo npm install -g diff-so-fancy
 
 # uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Claude
+curl -fsSL https://claude.ai/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+rtk init -g
 
 # neovim
 # follow nvim.appimage installation here: https://github.com/neovim/neovim-releases/releases
