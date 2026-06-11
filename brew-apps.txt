@@ -34,5 +34,7 @@ ffurrer2/tap/semver
 watch
 chezmoi
 dive
+kubectl
+kubecolor
 k9s
 espanso
