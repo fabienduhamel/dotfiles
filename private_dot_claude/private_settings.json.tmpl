@@ -1,0 +1,101 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat /tmp/**)",
+      "Bash(cat {{ .chezmoi.homeDir }}/.config/chezmoi/**)",
+      "Bash(cat {{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
+      "Bash(cd /tmp/**)",
+      "Bash(cd {{ .chezmoi.homeDir }}/**)",
+      "Bash(chezmoi add *)",
+      "Bash(chezmoi cat *)",
+      "Bash(chezmoi diff *)",
+      "Bash(chezmoi managed *)",
+      "Bash(chezmoi re-add *)",
+      "Bash(chezmoi source-path *)",
+      "Bash(claude mcp:*)",
+      "Bash(dig *)",
+      "Bash(echo *)",
+      "Bash(env)",
+      "Bash(gh repo view *)",
+      "Bash(git *)",
+      "Bash(git check-ignore *)",
+      "Bash(gitleaks *)",
+      "Bash(glab *)",
+      "Bash(grep *)",
+      "Bash(head *)",
+      "Bash(jobs)",
+      "Bash(jq *)",
+      "Bash(kubectl config *)",
+      "Bash(kubectl get *)",
+      "Bash(ls *)",
+      "Bash(npm search:*)",
+      "Bash(rg *)",
+      "Bash(rtk curl *)",
+      "Bash(rtk diff *)",
+      "Bash(rtk discover *)",
+      "Bash(rtk find *)",
+      "Bash(rtk gain)",
+      "Bash(rtk gh *)",
+      "Bash(rtk git *)",
+      "Bash(rtk glab *)",
+      "Bash(rtk grep *)",
+      "Bash(rtk helm *)",
+      "Bash(rtk help *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk read *)",
+      "Bash(rtk rewrite *)",
+      "Bash(rtk rg *)",
+      "Bash(rtk tree *)",
+      "Bash(tail *)",
+      "Bash(uv --version)",
+      "Bash(uv add *)",
+      "Bash(uv init *)",
+      "Bash(uv pip *)",
+      "Bash(wc *)",
+      "Bash(wget *)",
+      "Bash(yq *)",
+      "Edit({{ .chezmoi.homeDir }}/.claude/**)",
+      "Edit({{ .chezmoi.homeDir }}/.config/chezmoi/**)",
+      "Edit({{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
+      "Read(//tmp/**)",
+      "Read(/{{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
+      "Read(/{{ .chezmoi.homeDir }}/.ssh/config)",
+      "Skill(*)",
+      "WebFetch",
+      "WebSearch",
+      "Write(/tmp/**)",
+      "Write({{ .chezmoi.homeDir }}/.claude/**)",
+      "Write({{ .chezmoi.homeDir }}/.config/chezmoi/**)",
+      "Write({{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
+      "Bash(chezmoi status *)",
+      "Bash(chezmoi --version)"
+    ],
+    "ask": [
+      "Bash(git branch -D *)",
+      "Bash(git clean -f*)",
+      "Bash(git clean -fd*)",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard*)"
+    ],
+    "additionalDirectories": [
+      "{{ .chezmoi.homeDir }}/.claude/plans",
+      "{{ .chezmoi.homeDir }}/.local/share/chezmoi"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{ .chezmoi.homeDir }}/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {},
+  "effortLevel": "xhigh"
+}
