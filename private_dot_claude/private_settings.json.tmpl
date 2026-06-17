@@ -1,6 +1,9 @@
 {
   "permissions": {
     "allow": [
+      "Bash(bat /tmp/**)",
+      "Bash(bat {{ .chezmoi.homeDir }}/.config/chezmoi/**)",
+      "Bash(bat {{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
       "Bash(cat /tmp/**)",
       "Bash(cat {{ .chezmoi.homeDir }}/.config/chezmoi/**)",
       "Bash(cat {{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
@@ -8,6 +11,7 @@
       "Bash(cd {{ .chezmoi.homeDir }}/**)",
       "Bash(chezmoi --version)",
       "Bash(chezmoi add *)",
+      "Bash(chezmoi apply *)",
       "Bash(chezmoi cat *)",
       "Bash(chezmoi diff *)",
       "Bash(chezmoi managed *)",
