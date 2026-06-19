@@ -136,3 +136,4 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply fabienduhamel
 - [Stats](https://github.com/exelban/stats)
 - [Itsycal](https://www.mowglii.com/itsycal/)
 - [Azayaka](https://github.com/Mnpn/Azayaka) - screen capture
+- [FluidVoice](https://github.com/altic-dev/FluidVoice) - Open source Speech-to-text
