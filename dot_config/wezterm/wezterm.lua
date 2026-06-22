@@ -11,7 +11,7 @@ config = {
 	font = wezterm.font("MesloLGL Nerd Font"),
 	font_size = 14.0,
 	use_fancy_tab_bar = false,
-	hide_tab_bar_if_only_one_tab = true,
+	hide_tab_bar_if_only_one_tab = false,
 	send_composed_key_when_left_alt_is_pressed = true,
 	send_composed_key_when_right_alt_is_pressed = true,
 	use_dead_keys = false,
@@ -19,10 +19,16 @@ config = {
 	initial_cols = 180,
 	window_background_opacity = 0.95,
 	macos_window_background_blur = 20,
+	tab_max_width = 36,
 }
 
 config.colors = {
 	split = "#DADADA",
+	tab_bar = {
+		background = "#181825",
+		new_tab = { bg_color = "#181825", fg_color = "#6c7086" },
+		new_tab_hover = { bg_color = "#313244", fg_color = "#cdd6f4" },
+	},
 }
 
 config.inactive_pane_hsb = {
@@ -31,22 +37,21 @@ config.inactive_pane_hsb = {
 }
 
 config.mouse_bindings = {
-	-- Change the default click behavior so that it only selects
-	-- text and doesn't open hyperlinks
+	-- Click selects text only, without opening hyperlinks
 	{
 		event = { Up = { streak = 1, button = "Left" } },
 		mods = "NONE",
 		action = act.CompleteSelection("PrimarySelection"),
 	},
 
-	-- and make CTRL-Click open hyperlinks
+	-- CMD+Click opens the hyperlink under the cursor
 	{
 		event = { Up = { streak = 1, button = "Left" } },
 		mods = "CMD",
 		action = act.OpenLinkAtMouseCursor,
 	},
 
-	-- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+	-- Block the Down event of CMD+Click to avoid side effects
 	{
 		event = { Down = { streak = 1, button = "Left" } },
 		mods = "CMD",
@@ -76,7 +81,7 @@ config.keys = {
 		key = "RightArrow",
 		action = act.SendKey({ key = "f", mods = "ALT" }),
 	},
-	-- splitting
+	-- Pane splitting
 	{
 		mods = "CTRL|SHIFT",
 		key = "i",
@@ -87,7 +92,7 @@ config.keys = {
 		key = "o",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
-	-- pane resizing
+	-- Pane resizing
 	{
 		mods = "CTRL|SHIFT",
 		key = "UpArrow",
@@ -139,5 +144,75 @@ config.keys = {
 		action = wezterm.action.ActivatePaneDirection("Down"),
 	},
 }
+
+-- Catppuccin Mocha
+local green = "#a6e3a1"
+local red = "#f38ba8"
+local green_active = "#2ea043"
+local red_active   = "#e5534b"
+local white = "#cdd6f4"
+local mauve = "#cba6f7"
+local base = "#1e1e2e"
+local bar_bg = "#181825"
+local inactive_bg = "#313244"
+
+local function truncate(s, max)
+	if #s > max then
+		return s:sub(1, max - 1) .. "…"
+	end
+	return s
+end
+
+-- Tab title: "✔ 📂 folder" at prompt (green/red), "📂 folder $ cmd" when running
+wezterm.on("format-tab-title", function(tab)
+	local pane = tab.active_pane
+
+	-- Current folder (last path component)
+	local folder = "~"
+	local cwd = pane.current_working_dir
+	if cwd then
+		local path = cwd.file_path
+		folder = path:match("([^/]+)/?$") or path
+		if folder == "" then
+			folder = "/"
+		end
+	end
+
+	local cmd = pane.user_vars.wt_cmd or ""
+	local exit_code = tonumber(pane.user_vars.wt_exit) or 0
+	local icon = exit_code == 0 and "\u{2714}" or "\u{2718}"
+	local icon_color = exit_code == 0 and (tab.is_active and green_active or green)
+		or (tab.is_active and red_active or red)
+
+	local this_bg = tab.is_active and mauve or inactive_bg
+	local this_fg = tab.is_active and base or white
+
+	local segments = { { Background = { Color = this_bg } } }
+
+	if cmd == "" then
+		table.insert(segments, { Foreground = { Color = icon_color } })
+		table.insert(segments, { Text = " " .. icon .. " " })
+	end
+
+	table.insert(segments, { Attribute = { Italic = true } })
+	table.insert(segments, { Foreground = { Color = this_fg } })
+	table.insert(segments, { Text = " 📂 " .. truncate(folder, 18) })
+	table.insert(segments, { Attribute = { Italic = false } })
+
+	if cmd ~= "" then
+		table.insert(segments, { Attribute = { Intensity = "Bold" } })
+		table.insert(segments, { Foreground = { Color = this_fg } })
+		table.insert(segments, { Text = " $ " .. truncate(cmd, 28 - #folder) })
+		table.insert(segments, { Attribute = { Intensity = "Normal" } })
+	end
+
+	table.insert(segments, { Text = " " })
+
+	-- Dark gap between tabs
+	table.insert(segments, { Background = { Color = bar_bg } })
+	table.insert(segments, { Text = " " })
+
+	return segments
+end)
 
 return config

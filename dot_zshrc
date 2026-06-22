@@ -185,3 +185,19 @@ fi
 
 [[ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# WezTerm tab title integration:
+# - preexec: sends the full command to WezTerm via OSC 1337 SetUserVar (wt_cmd)
+_wezterm_preexec() {
+    printf '\e]1337;SetUserVar=wt_cmd=%s\e\\' "$(printf '%s' "$1" | base64 | tr -d '\n')"
+    printf '\e[0m'
+  }
+# - precmd: clears wt_cmd (back at prompt), saves the last exit code (wt_exit)
+_wezterm_precmd() {
+  local e=$?
+ printf '\e]1337;SetUserVar=wt_exit=%s\e\\' "$(printf '%s' "$e" | base64 | tr -d '\n')"
+  printf '\e]1337;SetUserVar=wt_cmd=\e\\'
+  printf '\e]7;file://%s%s\e\\' "$HOST" "$PWD"
+}
+add-zsh-hook preexec _wezterm_preexec
+add-zsh-hook precmd _wezterm_precmd
+
