@@ -143,6 +143,17 @@ config.keys = {
 		key = "DownArrow",
 		action = wezterm.action.ActivatePaneDirection("Down"),
 	},
+	-- Tab switching
+	{
+		mods = "CTRL",
+		key = "LeftArrow",
+		action = act.ActivateTabRelative(-1),
+	},
+	{
+		mods = "CTRL",
+		key = "RightArrow",
+		action = act.ActivateTabRelative(1),
+	},
 }
 
 -- Catppuccin Mocha
