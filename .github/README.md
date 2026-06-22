@@ -39,8 +39,6 @@ brew install zsh-autosuggestions
 ```sh
 xargs sudo apt install < apt-apps.txt
 
-sudo npm install -g diff-so-fancy
-
 # uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 

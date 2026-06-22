@@ -4,7 +4,7 @@ coreutils
 neovim
 bat
 curl
-diff-so-fancy
+git-delta
 fzf
 gh
 jq

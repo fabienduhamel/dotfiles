@@ -18,6 +18,7 @@ silversearcher-ag
 btop
 zoxide
 fd-find
+git-delta
 hub
 python3-semver
 watch
