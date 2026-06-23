@@ -12,14 +12,30 @@
 # ctrl - right : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m space --focus next; fi
 
 # apps shortcuts
-ralt - b : open -a Google\ Chrome
+ralt - c : open -a Google\ Chrome
 ralt - o : open -a Obsidian
 ralt - t : open -a WezTerm
+rcmd - c : open -a Google\ Chrome
+rcmd - o : open -a Obsidian
+rcmd - t : open -a WezTerm
+rcmd - v : open -a Visual\ Studio\ Code
+rcmd - s : open -a Slack
 
 ralt - 0x12 : open -a Google\ Chrome # ralt + &
 ralt - 0x13 : open -a WezTerm # ralt + é
 ralt - 0x14 : open -a Visual\ Studio\ Code # ralt + "
 ralt - 0x15 : open -a Obsidian # ralt + '
+
+ctrl + alt + shift + cmd - 0x12 : open -a Google\ Chrome # hyper + &
+ctrl + alt + shift + cmd - 0x13 : open -a WezTerm # hyper + é
+ctrl + alt + shift + cmd - 0x14 : open -a Visual\ Studio\ Code # ralt + "
+ctrl + alt + shift + cmd - 0x15 : open -a Obsidian # ralt + '
+
+# focus window by direction
+ctrl + alt + shift + cmd - left : ~/.config/skhd/focus_window.sh left
+ctrl + alt + shift + cmd - right : ~/.config/skhd/focus_window.sh right
+ctrl + shift - left : ~/.config/skhd/focus_window.sh left
+ctrl + shift - right : ~/.config/skhd/focus_window.sh right
 
 # toggle private DNS (MacOS)
 cmd - f12 : ~/Dev/boilerplate/bash/mac-dns-switcher.sh 127.0.0.1
