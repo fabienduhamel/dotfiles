@@ -68,29 +68,36 @@ function run(argv) {
   const goingLeft = argv[0] !== 'right'; // anything but 'right' means left
 
   const wins = onScreenWindows();
+  if (wins.length === 0) return; // nothing to focus at all
 
-  // The focused window is the front-most one owned by the active app.
+  // Pick the extreme window along x: leftmost when pickLeft, else rightmost.
+  const extreme = (cands, pickLeft) => cands.reduce((best, w) =>
+    best === null ? w
+      : (pickLeft ? (w.x < best.x ? w : best) : (w.x > best.x ? w : best)),
+    null);
+
+  // The focused window is the front-most one owned by the active app. It can be
+  // missing (desktop clicked, menubar app, app with no window): then just jump
+  // toward the side we asked for — 'left' to the leftmost window, 'right' to the
+  // rightmost — so a single keypress always lands somewhere predictable.
   const frontPID = $.NSWorkspace.sharedWorkspace.frontmostApplication.processIdentifier;
   const focused = wins.find(w => w.pid === frontPID);
-  if (!focused) return;
+  if (!focused) { focus(extreme(wins, goingLeft), wins); return; }
 
   const screen = screenRects().find(s => inRect(s, focused))
     || { l: -1e9, r: 1e9, t: -1e9, b: 1e9 };
 
-  // Nearest in the travel direction: 'left' wants the largest x still left of
-  // us, 'right' the smallest x still right of us — the same comparison also
-  // yields the rightmost / leftmost window when we hop to the other screen.
-  const nearest = (cands) => cands.reduce((best, w) =>
-    best === null ? w : (goingLeft ? (w.x > best.x ? w : best) : (w.x < best.x ? w : best)),
-    null);
-
-  // 1) a neighbor on the same screen, in the requested direction
-  let target = nearest(wins.filter(w =>
-    w !== focused && inRect(screen, w) &&
-    (goingLeft ? w.x < focused.x : w.x > focused.x)));
+  // The neighbor we want is the closest window on the requested side: going left
+  // that's the rightmost still left of us, going right the leftmost still right
+  // of us — i.e. the extreme opposite to our travel direction.
+  // 1) a neighbor on the same screen
+  let target = extreme(
+    wins.filter(w => w !== focused && inRect(screen, w) &&
+      (goingLeft ? w.x < focused.x : w.x > focused.x)),
+    !goingLeft);
 
   // 2) otherwise hop to the other screen, entering from the opposite edge
-  if (!target) target = nearest(wins.filter(w => w !== focused && !inRect(screen, w)));
+  if (!target) target = extreme(wins.filter(w => w !== focused && !inRect(screen, w)), !goingLeft);
 
   if (target) focus(target, wins);
 }
