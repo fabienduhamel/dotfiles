@@ -142,16 +142,16 @@ chezmoi apply   # installs whatever is missing — safe to re-run
 
 ## Desktop apps
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [VSCode](https://code.visualstudio.com/)
-- [Raycast](https://www.raycast.com/) or [Alfred](https://www.alfredapp.com/)
-- [Rectangle](https://rectangleapp.com/) - window management (included in Raycast)
-- [Amphetamine](https://apps.apple.com/fr/app/amphetamine/id937984704?mt=12)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) - container runtime & management
+- [VSCode](https://code.visualstudio.com/) - code editor
+- [Raycast](https://www.raycast.com/) or [Alfred](https://www.alfredapp.com/) - launcher & productivity
+- [Rectangle](https://rectangleapp.com/) - window management
+- [Amphetamine](https://apps.apple.com/fr/app/amphetamine/id937984704?mt=12) - keep the Mac awake
 - [Mos](https://mos.caldis.me/) - smooth mouse scrolling
-- [AltTab](https://alt-tab-macos.netlify.app/)
-- [BetterDisplay](https://github.com/waydabber/BetterDisplay)
-- [Obsidian](https://obsidian.md/)
-- [Stats](https://github.com/exelban/stats)
-- [Itsycal](https://www.mowglii.com/itsycal/)
+- [AltTab](https://alt-tab-macos.netlify.app/) - alt-tab window switcher
+- [BetterDisplay](https://github.com/waydabber/BetterDisplay) - display resolution & HiDPI control
+- [Obsidian](https://obsidian.md/) - markdown notes
+- [Stats](https://github.com/exelban/stats) - system monitor in the menu bar
+- [Itsycal](https://www.mowglii.com/itsycal/) - menu bar calendar
 - [Azayaka](https://github.com/Mnpn/Azayaka) - screen capture
 - [FluidVoice](https://github.com/altic-dev/FluidVoice) - Open source Speech-to-text
