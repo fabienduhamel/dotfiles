@@ -96,11 +96,16 @@ Follow [Lazyvim installation](https://www.lazyvim.org/installation).
 
 1. Install [skhd](https://github.com/koekeishiya/skhd)
 2. Install [Rectangle](https://rectangleapp.com/)
-3. Install [Yabai](https://github.com/koekeishiya/yabai)
+3. Install [Karabiner-Elements](https://karabiner-elements.pqrs.org/) for the
+   `hyper` key remap (`brew install --cask karabiner-elements`)
 
 Optional (for window borders): 4. Install [JankyBorders](https://github.com/FelixKratz/JankyBorders)
 
 Setup your wallpaper!
+
+See [Keyboard Shortcuts](../docs/keyboard-shortcuts.md) for the unified
+cross-app keyboard layout (skhd, VSCode, WezTerm, Chrome) and the modifier
+logic behind it.
 
 ### chezmoi
 
