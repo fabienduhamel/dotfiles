@@ -5,6 +5,9 @@
       "Bash(bat /tmp/**)",
       "Bash(bat {{ .chezmoi.homeDir }}/.config/chezmoi/**)",
       "Bash(bat {{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
+      "Bash(bat --style=plain /tmp/**)",
+      "Bash(bat --style=plain {{ .chezmoi.homeDir }}/.config/chezmoi/**)",
+      "Bash(bat --style=plain {{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
       "Bash(cat /tmp/**)",
       "Bash(cat {{ .chezmoi.homeDir }}/.config/chezmoi/**)",
       "Bash(cat {{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
@@ -102,6 +105,7 @@
       "{{ .chezmoi.homeDir }}/.local/share/chezmoi"
     ]
   },
+  "model": "opus[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -127,5 +131,6 @@
       }
     }
   },
-  "effortLevel": "xhigh"
+  "effortLevel": "xhigh",
+  "tui": "fullscreen"
 }
