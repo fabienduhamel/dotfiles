@@ -41,6 +41,9 @@ config.cursor_blink_ease_out = "EaseOut"
 config.animation_fps = 60
 
 local base_colors = {
+	-- Brighter default text than Catppuccin Mocha's #cdd6f4 for stronger
+	-- contrast against the dark background (keeps the cool, slightly-blue tint)
+	foreground = "#e6e9f0",
 	split = "#CBA6F7",
 	tab_bar = {
 		background = "#313244", -- lighter grey for the empty bar area (right of the tabs)
@@ -54,7 +57,7 @@ config.colors = base_colors
 -- desaturate them. Applies to inactive panes only, so the active pane is left
 -- untouched. Tune saturation/brightness to taste; 1.0 = no change.
 config.inactive_pane_hsb = {
-	brightness = 0.65,
+	brightness = 0.55,
 	saturation = 0.85,
 }
 
