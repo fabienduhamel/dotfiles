@@ -44,7 +44,19 @@
     editor       = vim
     whitespace   = -trailing-space
     excludesfile = ~/.gitignore_global
-    pager        = diff-so-fancy | less --tabs=1,5 -R -F -X
+    pager        = delta
+
+[delta]
+    features    = catppuccin-mocha
+    line-numbers = true
+    navigate = true
+
+# curl -fsSL https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig -o ~/.config/delta/catppuccin.gitconfig
+[include]
+    path = ~/.config/delta/catppuccin.gitconfig
+
+[interactive]
+    diffFilter = delta --color-only
 
 [diff]
     mnemonicPrefix = true
@@ -62,6 +74,7 @@
 
 [merge]
     tool = meld
+    conflictstyle = zdiff3
 
 [sequence]
     editor = interactive-rebase-tool
