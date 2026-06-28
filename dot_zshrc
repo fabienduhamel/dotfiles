@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 
 # go
 if [ -d /usr/local/go/bin ]; then
@@ -134,9 +134,6 @@ bindkey "^[[A" up-line-or-beginning-search
 bindkey "^p" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 bindkey "^n" down-line-or-beginning-search
-
-# brew
-command -v /opt/homebrew/bin/brew >/dev/null && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # helm completion
 command -v helm >/dev/null && source <(helm completion zsh)
