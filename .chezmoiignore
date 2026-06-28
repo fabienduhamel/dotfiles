@@ -1,7 +1,12 @@
 iterm2/
+docs/
 brew-apps.txt
 brew-extras.txt
 apt-apps.txt
 {{ if ne .chezmoi.os "darwin" }}
+# macOS-only / GUI configs — Linux boxes are headless TUI servers
 Library
+.config/karabiner
+.config/skhd
+.config/wezterm
 {{ end }}
