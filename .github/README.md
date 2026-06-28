@@ -28,10 +28,6 @@ rtk init -g
 
 # --- others ---
 xargs brew install < brew-extras.txt
-
-# zsh-autosuggestions (optional)
-# https://github.com/zsh-users/zsh-autosuggestions
-brew install zsh-autosuggestions
 ```
 
 ### Linux server
@@ -124,6 +120,25 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply fabienduhamel
 ```
 
 [chezmoi documentation](https://www.chezmoi.io/user-guide/command-overview/)
+
+### Keeping packages in sync
+
+Package lists are the single source of truth, versioned in this repo:
+`brew-apps.txt` + `brew-extras.txt` (macOS) and `apt-apps.txt` (Linux servers).
+
+The `run_onchange_install-packages.sh.tmpl` script makes `chezmoi apply`
+idempotently realign installed packages with those manifests: whenever a
+manifest changes, the next `chezmoi apply` installs the new packages (brew/apt
+skip what's already there). So the workflow to add a tool everywhere is:
+
+```sh
+# 1. add the package to the manifest (or capture the current state):
+brew leaves > ~/.local/share/chezmoi/brew-apps.txt          # macOS
+apt-mark showmanual > ~/.local/share/chezmoi/apt-apps.txt   # Linux
+
+# 2. commit, then on each machine:
+chezmoi apply   # installs whatever is missing — safe to re-run
+```
 
 ## Desktop apps
 

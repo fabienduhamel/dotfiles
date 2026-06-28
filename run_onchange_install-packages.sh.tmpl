@@ -1,0 +1,36 @@
+#!/bin/bash
+# Idempotent package realignment, driven by chezmoi.
+#
+# This is a `run_onchange_` script: chezmoi re-runs it automatically on the next
+# `chezmoi apply` whenever the package manifests embedded below change (their
+# content is inlined via `include`, so editing a manifest changes this rendered
+# script and re-triggers it). brew and apt both skip already-installed packages,
+# so running it repeatedly is safe.
+#
+# Workflow: add a package to brew-apps.txt / brew-extras.txt (macOS) or
+# apt-apps.txt (Linux) in the chezmoi source, commit, then run `chezmoi apply`
+# on each machine — the new package gets installed everywhere.
+
+set -uo pipefail
+
+{{ if eq .chezmoi.os "darwin" -}}
+packages=$(grep -vE '^[[:space:]]*(#|$)' <<'BREW_EOF'
+{{ include "brew-apps.txt" }}
+{{ include "brew-extras.txt" }}
+BREW_EOF
+)
+if [ -n "$packages" ]; then
+  echo "==> Aligning Homebrew packages with chezmoi manifests"
+  echo "$packages" | xargs brew install
+fi
+{{ else if eq .chezmoi.os "linux" -}}
+packages=$(grep -vE '^[[:space:]]*(#|$)' <<'APT_EOF'
+{{ include "apt-apps.txt" }}
+APT_EOF
+)
+if [ -n "$packages" ]; then
+  echo "==> Aligning apt packages with chezmoi manifests"
+  sudo apt-get update
+  echo "$packages" | xargs sudo apt-get install -y
+fi
+{{ end -}}

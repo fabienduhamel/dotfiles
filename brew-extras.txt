@@ -1,9 +1,10 @@
-snitch
-WebPQuickLook
 borgbackup
 exiftool
 ffmpeg
 imagemagick
-rsync
 jdupes
+jpegoptim
+rsync
+snitch
+WebPQuickLook
 yazi
