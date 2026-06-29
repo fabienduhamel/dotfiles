@@ -79,6 +79,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git safe-paste composer docker docker-compose aws helm kubectl terraform)
 
+# brew: load shellenv BEFORE oh-my-zsh so its compinit picks up Homebrew's
+# completions (brew, chezmoi, gh, … live in $(brew --prefix)/share/zsh/site-functions)
+command -v /opt/homebrew/bin/brew >/dev/null && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
