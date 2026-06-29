@@ -10,6 +10,7 @@ espanso
 eza
 fd
 ffurrer2/tap/semver
+font-jetbrains-mono-nerd-font
 fx
 fzf
 gh
