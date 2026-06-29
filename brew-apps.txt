@@ -1,3 +1,4 @@
+asmvik/formulae/skhd
 asmvik/formulae/yabai
 atuin
 bat
@@ -20,6 +21,7 @@ helm
 hub
 jq
 k9s
+karabiner-elements
 kubecolor
 kubectl
 lazydocker

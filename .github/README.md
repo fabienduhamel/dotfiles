@@ -90,10 +90,7 @@ Follow [Lazyvim installation](https://www.lazyvim.org/installation).
 
 ### Window management
 
-1. Install [skhd](https://github.com/koekeishiya/skhd)
-2. Install [Rectangle](https://rectangleapp.com/)
-3. Install [Karabiner-Elements](https://karabiner-elements.pqrs.org/) for the
-   `hyper` key remap (`brew install --cask karabiner-elements`)
+1. Install [Rectangle](https://rectangleapp.com/)
 
 Optional (for window borders): 4. Install [JankyBorders](https://github.com/FelixKratz/JankyBorders)
 
