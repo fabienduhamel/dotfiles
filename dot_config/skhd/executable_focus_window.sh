@@ -96,8 +96,17 @@ function run(argv) {
       (goingLeft ? w.x < focused.x : w.x > focused.x)),
     !goingLeft);
 
-  // 2) otherwise hop to the other screen, entering from the opposite edge
-  if (!target) target = extreme(wins.filter(w => w !== focused && !inRect(screen, w)), !goingLeft);
+  // 2) otherwise the nearest window in the travel direction (on another screen),
+  //    wrapping to the far end once we're already at the edge. Ordering globally
+  //    by x in the requested direction — instead of grabbing "any off-screen
+  //    window" — is what lets 3+ monitors cycle A->B->C->A rather than
+  //    ping-ponging between only two.
+  if (!target) {
+    const ahead = wins.filter(w => w !== focused &&
+      (goingLeft ? w.x < focused.x : w.x > focused.x));
+    const pool = ahead.length ? ahead : wins.filter(w => w !== focused);
+    target = extreme(pool, !goingLeft);
+  }
 
   if (target) focus(target, wins);
 }
