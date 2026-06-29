@@ -247,8 +247,10 @@ wezterm.on("format-tab-title", function(tab)
 	end
 
 	table.insert(segments, { Attribute = { Italic = true } })
+	table.insert(segments, { Attribute = { Intensity = "Bold" } })
 	table.insert(segments, { Foreground = { Color = this_fg } })
 	table.insert(segments, { Text = " 📂 " .. folder_disp })
+	table.insert(segments, { Attribute = { Intensity = "Normal" } })
 	table.insert(segments, { Attribute = { Italic = false } })
 
 	if cmd ~= "" then
