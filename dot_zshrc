@@ -142,9 +142,8 @@ command -v helm >/dev/null && source <(helm completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 
-# fix executable, ack installs itself as ack-grep on mint
-command -v ack-grep &>/dev/null && FZF_EXECUTABLE="ack-grep" || FZF_EXECUTABLE="ack"
-export FZF_DEFAULT_COMMAND="$FZF_EXECUTABLE -g '' --ignore-dir .git --ignore-dir Library --ignore-dir Cache --ignore-dir app/cache --ignore-dir .Trash"
+# file listing for fzf
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*' --glob '!Library/*' --glob '!Cache/*' --glob '!app/cache/*' --glob '!.Trash/*'"
 export FZF_DEFAULT_OPTS='--height 15 --reverse --border'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
