@@ -7,7 +7,7 @@ config.automatically_reload_config = true
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
 config.color_scheme = "Catppuccin Mocha"
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
 config.font_size = 14.0
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
