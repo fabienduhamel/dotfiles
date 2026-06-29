@@ -256,9 +256,10 @@ wezterm.on("format-tab-title", function(tab)
 	if cmd ~= "" then
 		table.insert(segments, { Attribute = { Intensity = "Bold" } })
 		table.insert(segments, { Foreground = { Color = this_fg } })
-		-- Budget the command by what's left after the (already truncated) folder;
-		-- clamp to >= 1 so a long/multibyte folder name can't pass a negative max
-		table.insert(segments, { Text = " $ " .. truncate(cmd, math.max(1, 28 - #folder_disp)) })
+		-- Budget the command by what's left in tab_max_width after " 📂 ", " $ ",
+		-- the trailing space and the dark inter-tab gap (≈10 cols) so that gap is
+		-- never clipped; clamp to >= 1 so a long folder name can't pass a negative max
+		table.insert(segments, { Text = " $ " .. truncate(cmd, math.max(1, config.tab_max_width - 10 - #folder_disp)) })
 		table.insert(segments, { Attribute = { Intensity = "Normal" } })
 	end
 
