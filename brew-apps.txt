@@ -1,5 +1,4 @@
 asmvik/formulae/skhd
-asmvik/formulae/yabai
 atuin
 bat
 btop
