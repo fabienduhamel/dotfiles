@@ -1,0 +1,87 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "4e05427b-c084-4cf5-b59e-78630910c261",
+        "type": "model",
+        "backgroundColor": "bgBrightCyan",
+        "rawValue": true,
+        "merge": true
+      },
+      {
+        "id": "bcc09095-e09f-4893-abf2-ddcbe91156ad",
+        "type": "thinking-effort",
+        "backgroundColor": "bgBrightBlue",
+        "rawValue": true
+      },
+      {
+        "id": "3",
+        "type": "context-bar",
+        "color": "brightBlack",
+        "rawValue": true,
+        "metadata": {
+          "display": "slider"
+        }
+      },
+      {
+        "id": "699574f1-3d90-43f0-9ffc-a46c7c1e591a",
+        "type": "session-usage",
+        "backgroundColor": "bgCyan",
+        "rawValue": false
+      },
+      {
+        "id": "0edc11be-06a8-49bc-83f6-dd87de1b00d9",
+        "type": "reset-timer",
+        "backgroundColor": "bgGreen",
+        "rawValue": false,
+        "metadata": {
+          "absolute": "false",
+          "compact": "true"
+        }
+      },
+      {
+        "id": "5",
+        "type": "cache-hit-rate",
+        "color": "magenta",
+        "rawValue": false,
+        "metadata": {
+          "hideWhenEmpty": "false",
+          "cacheScopeSession": "true"
+        }
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "defaultPadding": " ",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": true,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [
+      ""
+    ],
+    "endCaps": [
+      ""
+    ],
+    "theme": "catppuccin",
+    "autoAlign": true,
+    "continueThemeAcrossLines": true
+  },
+  "installation": {
+    "method": "auto-update",
+    "packageManager": "npm"
+  }
+}
