@@ -10,7 +10,7 @@ config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
 config.font_size = 14.0
 config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
 config.use_dead_keys = false
@@ -61,6 +61,10 @@ config.inactive_pane_hsb = {
 	saturation = 0.85,
 }
 
+-- 1 arrow-key press per wheel tick (default 3) for fullscreen/alt-screen apps
+-- (e.g. Claude Code, vim, htop) that don't handle mouse reporting themselves
+config.alternate_buffer_wheel_scroll_speed = 1
+
 config.mouse_bindings = {
 	-- Click selects text only, without opening hyperlinks
 	{
@@ -84,6 +88,24 @@ config.mouse_bindings = {
 	},
 }
 
+-- Routage intelligent tmux : si le pane au premier plan exécute tmux, la
+-- touche est traduite en séquence tmux (préfixe Ctrl+a + binding standard) ;
+-- sinon WezTerm garde son action native. Limite connue : sous ssh, le
+-- processus vu est `ssh`, donc un tmux distant reçoit l'action native.
+local function tmux_or(seq, native_action)
+	return wezterm.action_callback(function(window, pane)
+		local proc = pane:get_foreground_process_name() or ""
+		local name = proc:match("([^/]+)$") or ""
+		if name == "tmux" then
+			window:perform_action(act.SendString(seq), pane)
+		else
+			window:perform_action(native_action, pane)
+		end
+	end)
+end
+
+local tmux_prefix = "\x00" -- Ctrl+Space
+
 -- Keybindings
 config.keys = {
 	{
@@ -106,78 +128,95 @@ config.keys = {
 		key = "RightArrow",
 		action = act.SendKey({ key = "f", mods = "ALT" }),
 	},
-	-- Pane splitting
+	-- Pane splitting (dans tmux : | et - ouvrent dans le répertoire courant)
 	{
 		mods = "CTRL|SHIFT",
 		key = "i",
-		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = tmux_or(tmux_prefix .. "|", act.SplitHorizontal({ domain = "CurrentPaneDomain" })),
 	},
 	{
 		mods = "CTRL|SHIFT",
 		key = "o",
-		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = tmux_or(tmux_prefix .. "-", act.SplitVertical({ domain = "CurrentPaneDomain" })),
 	},
-	-- Pane resizing
+	-- Pane resizing (dans tmux : préfixe + Ctrl+flèche = resize-pane)
 	{
 		mods = "CTRL|SHIFT",
 		key = "UpArrow",
-		action = act.AdjustPaneSize({ "Up", 1 }),
+		action = tmux_or(tmux_prefix .. "\x1b[1;5A", act.AdjustPaneSize({ "Up", 1 })),
 	},
 	{
 		mods = "CTRL|SHIFT",
 		key = "DownArrow",
-		action = act.AdjustPaneSize({ "Down", 1 }),
+		action = tmux_or(tmux_prefix .. "\x1b[1;5B", act.AdjustPaneSize({ "Down", 1 })),
 	},
 	{
 		mods = "CTRL|SHIFT",
 		key = "LeftArrow",
-		action = act.AdjustPaneSize({ "Left", 1 }),
+		action = tmux_or(tmux_prefix .. "\x1b[1;5D", act.AdjustPaneSize({ "Left", 1 })),
 	},
 	{
 		mods = "CTRL|SHIFT",
 		key = "RightArrow",
-		action = act.AdjustPaneSize({ "Right", 1 }),
+		action = tmux_or(tmux_prefix .. "\x1b[1;5C", act.AdjustPaneSize({ "Right", 1 })),
 	},
+	-- Close pane (dans tmux : X = kill-pane sans confirmation, binding custom)
 	{
 		mods = "SUPER",
 		key = "w",
-		action = act.CloseCurrentPane({ confirm = false }),
+		action = tmux_or(tmux_prefix .. "X", act.CloseCurrentPane({ confirm = false })),
 	},
 	{
 		mods = "SUPER|SHIFT",
 		key = "Enter",
-		action = act.TogglePaneZoomState,
+		action = tmux_or(tmux_prefix .. "z", act.TogglePaneZoomState),
 	},
 	{
 		mods = "SUPER",
 		key = "LeftArrow",
-		action = act.ActivatePaneDirection("Left"),
+		action = tmux_or(tmux_prefix .. "\x1b[D", act.ActivatePaneDirection("Left")),
 	},
 	{
 		mods = "SUPER",
 		key = "RightArrow",
-		action = act.ActivatePaneDirection("Right"),
+		action = tmux_or(tmux_prefix .. "\x1b[C", act.ActivatePaneDirection("Right")),
 	},
 	{
 		mods = "SUPER",
 		key = "UpArrow",
-		action = act.ActivatePaneDirection("Up"),
+		action = tmux_or(tmux_prefix .. "\x1b[A", act.ActivatePaneDirection("Up")),
 	},
 	{
 		mods = "SUPER",
 		key = "DownArrow",
-		action = act.ActivatePaneDirection("Down"),
+		action = tmux_or(tmux_prefix .. "\x1b[B", act.ActivatePaneDirection("Down")),
 	},
-	-- Tab switching
+	-- New tab (dans tmux : nouvelle window)
+	{
+		mods = "SUPER",
+		key = "t",
+		action = tmux_or(tmux_prefix .. "c", act.SpawnTab("CurrentPaneDomain")),
+	},
+	-- Tab switching (dans tmux : fenêtre précédente/suivante)
 	{
 		mods = "CTRL",
 		key = "LeftArrow",
-		action = act.ActivateTabRelative(-1),
+		action = tmux_or(tmux_prefix .. "p", act.ActivateTabRelative(-1)),
 	},
 	{
 		mods = "CTRL",
 		key = "RightArrow",
-		action = act.ActivateTabRelative(1),
+		action = tmux_or(tmux_prefix .. "n", act.ActivateTabRelative(1)),
+	},
+	{
+		mods = "CTRL",
+		key = "Tab",
+		action = tmux_or(tmux_prefix .. "n", act.ActivateTabRelative(1)),
+	},
+	{
+		mods = "CTRL|SHIFT",
+		key = "Tab",
+		action = tmux_or(tmux_prefix .. "p", act.ActivateTabRelative(-1)),
 	},
 }
 
