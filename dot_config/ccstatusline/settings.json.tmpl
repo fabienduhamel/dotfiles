@@ -3,6 +3,14 @@
   "lines": [
     [
       {
+        "id": "session-title",
+        "type": "custom-command",
+        "commandPath": "{{ .chezmoi.homeDir }}/.config/ccstatusline/session-title.sh",
+        "timeout": 2000
+      }
+    ],
+    [
+      {
         "id": "4e05427b-c084-4cf5-b59e-78630910c261",
         "type": "model",
         "backgroundColor": "bgBrightCyan",
@@ -51,10 +59,9 @@
         }
       }
     ],
-    [],
     []
   ],
-  "flexMode": "full-minus-40",
+  "flexMode": "full",
   "compactThreshold": 60,
   "colorLevel": 2,
   "defaultPadding": " ",
@@ -77,7 +84,7 @@
       ""
     ],
     "theme": "catppuccin",
-    "autoAlign": true,
+    "autoAlign": false,
     "continueThemeAcrossLines": true
   },
   "installation": {
