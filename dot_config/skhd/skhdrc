@@ -3,13 +3,26 @@ ctrl + alt + shift + cmd - c : open -a Google\ Chrome
 ctrl + alt + shift + cmd - o : open -a Obsidian
 ctrl + alt + shift + cmd - t : open -a WezTerm
 ctrl + alt + shift + cmd - v : open -a Visual\ Studio\ Code
-ctrl + alt + shift + cmd - s : open -a Slack
+# ctrl + alt + shift + cmd - s : open -a Slack
+
+# same apps on the number row — keycodes for the physical 1..5 keys.
+# skhd can't parse the AZERTY symbols & é " ' ( as key-literals; keycodes are
+# layout-independent and fire whatever character the key produces (note: 5 = 0x17).
+ctrl + alt + shift + cmd - 0x12 : open -a Google\ Chrome
+ctrl + alt + shift + cmd - 0x13 : open -a WezTerm
+ctrl + alt + shift + cmd - 0x14 : open -a Visual\ Studio\ Code
+ctrl + alt + shift + cmd - 0x15 : open -a Obsidian
+ctrl + alt + shift + cmd - 0x17 : open -a Slack
 
 # focus window by direction
 ctrl + alt + shift + cmd - left : ~/.config/skhd/focus_window.sh left
 ctrl + alt + shift + cmd - right : ~/.config/skhd/focus_window.sh right
-ctrl + alt + shift + cmd - a : ~/.config/skhd/focus_window.sh left
-ctrl + alt + shift + cmd - e : ~/.config/skhd/focus_window.sh right
+ctrl + alt + shift + cmd - up : ~/.config/skhd/focus_window.sh up
+ctrl + alt + shift + cmd - down : ~/.config/skhd/focus_window.sh down
+ctrl + alt + shift + cmd - q : ~/.config/skhd/focus_window.sh left
+ctrl + alt + shift + cmd - d : ~/.config/skhd/focus_window.sh right
+ctrl + alt + shift + cmd - z : ~/.config/skhd/focus_window.sh up
+ctrl + alt + shift + cmd - s : ~/.config/skhd/focus_window.sh down
 
 # toggle private DNS (MacOS)
 cmd - f12 : ~/Dev/boilerplate/bash/mac-dns-switcher.sh 127.0.0.1

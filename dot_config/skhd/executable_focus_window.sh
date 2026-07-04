@@ -1,7 +1,8 @@
 #!/bin/bash
-# Focus the nearest window to the left/right of the focused one. When there is
-# nothing in that direction on the current screen, hop to the other monitor.
-# Usage: focus_window.sh left | focus_window.sh right
+# Focus the nearest window in a direction (left/right/up/down) from the focused
+# one. When there is nothing that way on the current screen, hop to the next
+# monitor.
+# Usage: focus_window.sh left | right | up | down
 osascript -l JavaScript - "$1" <<'EOF'
 ObjC.import('CoreGraphics');
 ObjC.import('AppKit');
@@ -65,47 +66,56 @@ function focus(target, wins) {
 }
 
 function run(argv) {
-  const goingLeft = argv[0] !== 'right'; // anything but 'right' means left
+  const dir = argv[0];
+  // Which axis we travel on, and whether toward the smaller coordinate. up/down
+  // move on y (top-left origin, y-down: up = smaller y). Unknown input falls
+  // back to left, matching the previous default.
+  const axis = (dir === 'up' || dir === 'down') ? 'y' : 'x';
+  const decreasing = dir !== 'right' && dir !== 'down';
+  const coord = w => (axis === 'x' ? w.x : w.y);
 
   const wins = onScreenWindows();
   if (wins.length === 0) return; // nothing to focus at all
 
-  // Pick the extreme window along x: leftmost when pickLeft, else rightmost.
-  const extreme = (cands, pickLeft) => cands.reduce((best, w) =>
+  // Pick the extreme window along the active axis: the minimum coordinate when
+  // pickMin (leftmost / topmost), else the maximum (rightmost / bottommost).
+  const extreme = (cands, pickMin) => cands.reduce((best, w) =>
     best === null ? w
-      : (pickLeft ? (w.x < best.x ? w : best) : (w.x > best.x ? w : best)),
+      : (pickMin ? (coord(w) < coord(best) ? w : best)
+                 : (coord(w) > coord(best) ? w : best)),
     null);
 
   // The focused window is the front-most one owned by the active app. It can be
   // missing (desktop clicked, menubar app, app with no window): then just jump
-  // toward the side we asked for — 'left' to the leftmost window, 'right' to the
-  // rightmost — so a single keypress always lands somewhere predictable.
+  // toward the side we asked for — left/up to the first window, right/down to
+  // the last — so a single keypress always lands somewhere predictable.
   const frontPID = $.NSWorkspace.sharedWorkspace.frontmostApplication.processIdentifier;
   const focused = wins.find(w => w.pid === frontPID);
-  if (!focused) { focus(extreme(wins, goingLeft), wins); return; }
+  if (!focused) { focus(extreme(wins, decreasing), wins); return; }
 
   const screen = screenRects().find(s => inRect(s, focused))
     || { l: -1e9, r: 1e9, t: -1e9, b: 1e9 };
 
-  // The neighbor we want is the closest window on the requested side: going left
-  // that's the rightmost still left of us, going right the leftmost still right
-  // of us — i.e. the extreme opposite to our travel direction.
+  // The neighbor we want is the closest window on the requested side: travelling
+  // toward smaller coords that's the last one still before us, toward larger
+  // coords the first one still after us — i.e. the extreme opposite to our
+  // travel direction.
   // 1) a neighbor on the same screen
   let target = extreme(
     wins.filter(w => w !== focused && inRect(screen, w) &&
-      (goingLeft ? w.x < focused.x : w.x > focused.x)),
-    !goingLeft);
+      (decreasing ? coord(w) < coord(focused) : coord(w) > coord(focused))),
+    !decreasing);
 
   // 2) otherwise the nearest window in the travel direction (on another screen),
   //    wrapping to the far end once we're already at the edge. Ordering globally
-  //    by x in the requested direction — instead of grabbing "any off-screen
-  //    window" — is what lets 3+ monitors cycle A->B->C->A rather than
-  //    ping-ponging between only two.
+  //    by the active axis in the requested direction — instead of grabbing "any
+  //    off-screen window" — is what lets 3+ monitors cycle A->B->C->A rather
+  //    than ping-ponging between only two.
   if (!target) {
     const ahead = wins.filter(w => w !== focused &&
-      (goingLeft ? w.x < focused.x : w.x > focused.x));
+      (decreasing ? coord(w) < coord(focused) : coord(w) > coord(focused)));
     const pool = ahead.length ? ahead : wins.filter(w => w !== focused);
-    target = extreme(pool, !goingLeft);
+    target = extreme(pool, !decreasing);
   }
 
   if (target) focus(target, wins);
