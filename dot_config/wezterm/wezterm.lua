@@ -128,6 +128,16 @@ config.keys = {
 		key = "RightArrow",
 		action = act.SendKey({ key = "f", mods = "ALT" }),
 	},
+	-- Shift+Enter : insère un saut de ligne (Claude Code, REPL…) au lieu de
+	-- valider. WezTerm envoie par défaut un simple \r (= Enter) ; on le remplace
+	-- par \x1b\r (Meta/Option+Enter), la séquence que Claude Code interprète comme
+	-- « nouvelle ligne ». Passe tel quel à travers tmux (pas de binding tmux
+	-- dessus, extended-keys désactivé), donc pas besoin de tmux_or.
+	{
+		mods = "SHIFT",
+		key = "Enter",
+		action = act.SendString("\x1b\r"),
+	},
 	-- Pane splitting (dans tmux : | et - ouvrent dans le répertoire courant)
 	{
 		mods = "CTRL|SHIFT",
