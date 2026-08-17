@@ -66,11 +66,14 @@ config.inactive_pane_hsb = {
 config.alternate_buffer_wheel_scroll_speed = 1
 
 config.mouse_bindings = {
-	-- Click selects text only, without opening hyperlinks
+	-- Click selects text only, without opening hyperlinks. Copies to the real
+	-- system clipboard: on macOS "PrimarySelection" alone is an internal-only
+	-- WezTerm buffer never exposed to the OS pasteboard, so Cmd+V elsewhere
+	-- gets nothing.
 	{
 		event = { Up = { streak = 1, button = "Left" } },
 		mods = "NONE",
-		action = act.CompleteSelection("PrimarySelection"),
+		action = act.CompleteSelection("ClipboardAndPrimarySelection"),
 	},
 
 	-- CMD+Click opens the hyperlink under the cursor
