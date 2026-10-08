@@ -42,23 +42,6 @@
       "Bash(ls *)",
       "Bash(npm search:*)",
       "Bash(rg *)",
-      "Bash(rtk curl *)",
-      "Bash(rtk diff *)",
-      "Bash(rtk discover *)",
-      "Bash(rtk fd *)",
-      "Bash(rtk find *)",
-      "Bash(rtk gain)",
-      "Bash(rtk gh *)",
-      "Bash(rtk git *)",
-      "Bash(rtk glab *)",
-      "Bash(rtk grep *)",
-      "Bash(rtk helm *)",
-      "Bash(rtk help *)",
-      "Bash(rtk ls *)",
-      "Bash(rtk read *)",
-      "Bash(rtk rewrite *)",
-      "Bash(rtk rg *)",
-      "Bash(rtk tree *)",
       "Bash(tail *)",
       "Bash(uv --version)",
       "Bash(uv add *)",
@@ -107,19 +90,6 @@
     ]
   },
   "model": "opus[1m]",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "{{ .chezmoi.homeDir }}/.claude/hooks/rtk-rewrite.sh"
-          }
-        ]
-      }
-    ]
-  },
   "statusLine": {
     "type": "command",
     "command": "npx -y ccstatusline@2.2.23",

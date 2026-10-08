@@ -31,7 +31,6 @@ node
 oha
 prettyping
 ripgrep
-rtk
 snitch
 tabiew
 telnet

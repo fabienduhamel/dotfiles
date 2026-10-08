@@ -1,5 +1,3 @@
-@RTK.md
-
 Préfère `rg` à `grep` pour les recherches dans le code.  
 Préfère `fd` à `find` pour les recherches de fichiers.  
 Préfère `bat` à `cat` pour afficher le contenu de fichiers.  
