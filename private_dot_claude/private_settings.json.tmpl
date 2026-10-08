@@ -50,20 +50,17 @@
       "Bash(wc *)",
       "Bash(wget *)",
       "Bash(yq *)",
-      "Edit({{ .chezmoi.homeDir }}/.claude/**)",
-      "Edit({{ .chezmoi.homeDir }}/.config/chezmoi/**)",
-      "Edit({{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
+      "Edit(//tmp/**)",
+      "Edit(/{{ .chezmoi.homeDir }}/.claude/**)",
+      "Edit(/{{ .chezmoi.homeDir }}/.config/chezmoi/**)",
+      "Edit(/{{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
       "Read(//tmp/**)",
       "Read(/{{ .chezmoi.homeDir }}/.claude/plugins/cache/claude-plugins-official/**)",
       "Read(/{{ .chezmoi.homeDir }}/.local/share/chezmoi/**)",
       "Read(/{{ .chezmoi.homeDir }}/.ssh/config)",
       "Skill(*)",
       "WebFetch",
-      "WebSearch",
-      "Write(/tmp/**)",
-      "Write({{ .chezmoi.homeDir }}/.claude/**)",
-      "Write({{ .chezmoi.homeDir }}/.config/chezmoi/**)",
-      "Write({{ .chezmoi.homeDir }}/.local/share/chezmoi/**)"
+      "WebSearch"
     ],
     "ask": [
       "Bash(curl * | bash)",
@@ -81,8 +78,8 @@
       "Read(**/.env*)",
       "Read(~/.aws/**)",
       "Read(~/.ssh/**)",
-      "Write(~/.aws/**)",
-      "Write(~/.ssh/**)"
+      "Edit(~/.aws/**)",
+      "Edit(~/.ssh/**)"
     ],
     "additionalDirectories": [
       "{{ .chezmoi.homeDir }}/.claude/plans",
