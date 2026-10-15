@@ -23,6 +23,10 @@ if [ -n "$packages" ]; then
   echo "==> Aligning Homebrew packages with chezmoi manifests"
   echo "$packages" | xargs brew install
 fi
+if ! brew list --cask hammerspoon >/dev/null 2>&1; then
+  echo "==> Installing Hammerspoon"
+  brew install --cask hammerspoon
+fi
 {{ else if eq .chezmoi.os "linux" -}}
 packages=$(grep -vE '^[[:space:]]*(#|$)' <<'APT_EOF'
 {{ include "apt-apps.txt" }}

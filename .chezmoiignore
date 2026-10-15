@@ -7,6 +7,6 @@ apt-apps.txt
 # macOS-only / GUI configs — Linux boxes are headless TUI servers
 Library
 .config/karabiner
-.config/skhd
 .config/wezterm
+.hammerspoon
 {{ end }}

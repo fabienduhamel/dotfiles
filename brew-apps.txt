@@ -1,4 +1,3 @@
-asmvik/formulae/skhd
 atuin
 bat
 btop

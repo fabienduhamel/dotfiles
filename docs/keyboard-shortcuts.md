@@ -8,7 +8,7 @@ app.
 
 | Modifier       | Meaning                                                                   |
 | -------------- | ------------------------------------------------------------------------- |
-| `hyper`        | **App focus** — jump to an app, or move to a neighboring app              |
+| `hyper`        | **App/window focus** — launch an app or move to a neighboring window       |
 | `cmd`          | **Navigate content** — cursor in VSCode, page in Chrome, panes in WezTerm |
 | `alt`          | **Navigate / move focus** — by word in text, between UI zones in VSCode   |
 | `+ shift`      | Turns navigation into **selection** (native macOS convention)             |
@@ -17,19 +17,20 @@ app.
 
 > `hyper` = Capslock or right `cmd`, remapped via Karabiner.
 
-The "go to the neighbor" idea is fractal across two scales: `hyper` + arrows
-moves between **apps**, `cmd` + arrows moves between **panes** inside an app.
+`hyper` + arrows moves between **windows**, `cmd` + arrows moves between
+**panes** inside an app.
 
-## System (skhd + Rectangle)
+## System (Hammerspoon + Rectangle)
 
 | Gesture                      | Action                                                              |
 | ---------------------------- | ------------------------------------------------------------------- |
-| `hyper` + letter (c/o/t/v/s) | Jump to a specific app                                              |
-| `hyper` + ←/→ (or `a`/`e`)   | Focus neighboring app (geographic) — `a`/`e` are an identical alias |
+| `hyper` + letter (c/o/t/v)   | Jump to a specific app                                              |
+| `hyper` + arrows (or `q`/`d`/`z`/`s`) | Focus the neighboring window in that direction             |
 | `ctrl + alt` + arrows        | Place the window (Rectangle)                                        |
 
 App launcher mnemonics: **c** Chrome, **o** Obsidian, **t** WezTerm,
-**v** VSCode, **s** Slack.
+**v** VSCode. `hyper` + physical number-row keys **1–5** launch Chrome,
+WezTerm, VSCode, Obsidian, and Slack respectively.
 
 ## VSCode
 

@@ -17,6 +17,7 @@ brew install --cask wezterm
 
 # dev
 xargs brew install < brew-apps.txt
+brew install --cask hammerspoon
 
 # uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -93,7 +94,7 @@ Optional (for window borders): 4. Install [JankyBorders](https://github.com/Feli
 Setup your wallpaper!
 
 See [Keyboard Shortcuts](../docs/keyboard-shortcuts.md) for the unified
-cross-app keyboard layout (skhd, VSCode, WezTerm, Chrome) and the modifier
+cross-app keyboard layout (Hammerspoon, VSCode, WezTerm, Chrome) and the modifier
 logic behind it.
 
 ### chezmoi
