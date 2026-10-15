@@ -165,3 +165,25 @@ hs.hotkey.bind(hyper, "l", function()
   local result, err = hs.osascript.applescript(script)
   if not result then hs.printf("Calendar shortcut failed: %s", err) end
 end)
+
+hs.hotkey.bind(hyper, "m", function()
+  local script = [[
+    tell application "Google Chrome"
+      repeat with w in windows
+        repeat with i from 1 to (count of tabs of w)
+          if (URL of tab i of w) starts with "https://mail.google.com/" then
+            set active tab index of w to i
+            set index of w to 1
+            activate
+            return "OK"
+          end if
+        end repeat
+      end repeat
+      open location "https://mail.google.com"
+      activate
+      return "OK"
+    end tell
+  ]]
+  local result, err = hs.osascript.applescript(script)
+  if not result then hs.printf("Gmail shortcut failed: %s", err) end
+end)
