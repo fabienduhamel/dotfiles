@@ -15,7 +15,7 @@ app.
 | `ctrl + shift` | **Structural** action — multi-cursor, pane resize                         |
 | `ctrl + alt`   | **Window placement** (Rectangle)                                          |
 
-> `hyper` = Capslock or right `cmd`, remapped via Karabiner.
+> `hyper` = right `cmd`, remapped via [Vorssaint](https://github.com/vorssaint/vorssaint-utils).
 
 `hyper` + arrows moves between **windows**, `cmd` + arrows moves between
 **panes** inside an app.

@@ -19,7 +19,6 @@ helm
 hub
 jq
 k9s
-karabiner-elements
 kubecolor
 kubectl
 lazydocker
@@ -37,6 +36,7 @@ terragrunt
 tldr
 tmux
 tw93/tap/mole
+vorssaint
 watch
 wget
 yarn
